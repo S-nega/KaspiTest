@@ -1,0 +1,119 @@
+body{
+    color: #4a4a4a;
+}
+.container{
+    width: 540px;
+    margin: auto;
+}
+.kaspi_pay-logo-block img{
+    margin: 70px 0 36px;
+    width: 130px;
+    height: 53px;
+}
+.kaspi_pay-signIn-block{
+    padding: 40px 50px;
+    background-color: #fff;
+}
+.kaspi_pay-signIn-block h1{
+    margin: 0 0 40px;
+    font-weight: normal;
+    font-size: 40px;
+}
+.kaspi_pay-signIn-block input{
+    width: 408px;
+    line-height: 24px;
+    border: 1px #ddd solid;
+    font-size: 17px;
+    padding: 20px 15px;
+    outline-offset: 0;
+    color: #ababab;
+}
+.kaspi_pay-signIn-block input:focus{
+    border: 1px solid #0089d0 !important;
+    padding: 30px 15px 10px 15px;
+}
+.kaspi_pay-signIn-block input:first-child{
+    border-bottom: 0;
+}
+.kaspi_pay-signIn-block a{
+    color: #0089d0;
+    font-size: 12px;
+    line-height: 14px;
+}
+.kaspi_pay-signIn-block a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.signIn-button{
+    background-color: #0089d0;
+    color: #fff !important;
+    width: 440px !important;
+    border: 0 !important;
+    margin: 10px 0;
+}
+.signIn-button:hover{
+    cursor: pointer;
+}
+
+.kaspi_pay-git-block h2{
+    color: #0089d0;
+    font-weight: normal;
+    margin: 20px 0 0 0;
+}
+.kaspi_pay-git-block h2:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.kaspi_pay-git-block p{
+    margin: 0;
+    font-size: 12px;
+}
+
+.kaspi_pay-footer{
+    margin: 53px 0 30px;
+    /*height: 147px;*/
+    border-top: 1px #ddd solid;
+    padding-top: 40px;
+    display: flex;
+}
+.kaspi_pay-footer-info-block{
+    width: 275px;
+    padding: 3px 5px 0 5px;
+}
+.kaspi_pay-footer-info-block p{
+    font-size: 12px;
+    margin: 0;
+}
+.kaspi_pay-footer-info-block ul{
+    display: flex;
+    list-style: none;
+    margin: 10px 0;
+    padding: 0;
+    height: 20px;
+    align-items: center;
+}
+.kaspi_pay-footer-info-block img{
+    width: 20px;
+    padding-right: 10px;
+}
+.kaspi_pay-footer-info-block a{
+    font-size: 12px;
+    color: #0089d0;
+    text-decoration: none;
+}
+.kaspi_pay-footer-info-block a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.kaspi_pay-footer-app_link-block{
+    display: flex;
+    flex-wrap: wrap;
+    width: 265px;
+    align-content: baseline;
+    padding: 0 5px;
+}
+.app_link{
+    width: 110px;
+    margin:0 10px 0 0;
+}

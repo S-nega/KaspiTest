@@ -1,0 +1,41 @@
+.footer-block{
+    margin: auto;
+    width: 1200px;
+}
+.footer-menu-block{
+    margin-top: 100px;
+    border-top: 1px #ddd solid;
+    border-bottom:  1px #ddd solid;
+    padding: 40px 0;
+}
+.footer-menu-block h1{
+    font-size: 17px;
+    /*???*/
+    margin: 0;
+}
+.footer-menu-block ul{
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 15px;
+}
+.footer-menu-block li{
+    margin: 0 0 16px;
+}
+.footer-menu-block a{
+    color:  rgba(0,0,0,.4);
+    font-size: 14px;
+}
+.footer-menu-block a:hover{
+    color: #1f1f1f;
+    cursor: pointer;
+}
+.footer-language_button{
+    border-radius: 12px;
+    color: rgba(0,0,0,.88);
+    padding: 9px 11px;
+}
+.footer-language_button:hover{
+    border: 1px solid rgba(0,0,0,.12);
+    color: rgba(0,0,0,.88);
+    padding: 8px 10px;
+}
