@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Kaspi Pay</title>
+        <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
+        <link href="../static/kaspiPay_style.css" th:href="@{/kaspiPay_style.css}" rel="stylesheet" />
+    </head>
+    <body>
+    <h1>Переводы</h1>
+        <form action="/addOperation" method="post">
+            <input type="number" id="iban_sender" value="1" style="display: none" name="iban_sender">
+            <label for="iban_getter">Введите IBAN получателя</label>
+            KZ00900<input type="number" id="iban_getter" placeholder="000000" name="iban_getter">
+<!--            <label for="operation_type"></label>-->
+            <input type="text" id="operation_type" value="plus" style="display: none" name="operation_type">
+            <label for="sum">Введите сумму перевода</label>
+            <input type="number" id="sum" placeholder="0" name="sum">тг
+            <label for="sum">Введите сообщение получателю</label>
+            <input type="text" id="message" placeholder="Сообщение получателю">
+            <input type="submit" value="Перевести">
+        </form>
+    </body>
+</html>

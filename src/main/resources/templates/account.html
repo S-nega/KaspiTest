@@ -2,20 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Kaspi Pay</title>
-    <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
-    <link href="../static/kaspiPay_style.css" th:href="@{/kaspiPay_style.css}" rel="stylesheet" />
+<title>Kaspi Pay</title>
+<link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
+<link href="../static/kaspiPay_style.css" th:href="@{/kaspiPay_style.css}" rel="stylesheet" />
 </head>
 <body>
 <!--    <header>-->
 <!--        <img src="img/kaspiPay.svg">-->
 <!--    </header>    -->
     <h1>Мой Счет</h1>
+    <a href="/messages">Сообщения</a>
+    <a href="/addOperation">Сделать перевод</a>
 
     <tr th:each="users: ${user}">
-        <td th:text="${user.getIban()}"></td>
+        KZ00900<td th:text="${users.iban}"></td>
         <td th:text="${user.getFirstname()}"></td>
         <td th:text="${user.getLastname()}"></td>
+        <td >
+            <a href="/operations/{users.iban}">Выписка по операциям</a>
+        </td>
     </tr>
+<br>
+op iban
+
 </body>
 </html>

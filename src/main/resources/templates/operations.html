@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Kaspi Pay</title>
+        <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
+        <link href="../static/kaspiPay_style.css" th:href="@{/kaspiPay_style.css}" rel="stylesheet" />
+    </head>
+    <body>
+        <tr th:each="operations: ${operation}">
+            <!--        <td th:if="${operation.getIban()}==user.getIban()"-->
+            <td th:text="${operation.getIban_id}"></td>
+            <!--        <td th:text="${operation.getOperation_type()}"></td>-->
+            <!--        <td th:text="${operation.getSum()}"></td>-->
+        </tr>
+    </body>
+</html>
