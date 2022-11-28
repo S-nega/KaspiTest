@@ -17,13 +17,17 @@ public interface UserService {
     public List<Message> findAllMessages();
     void saveMessage(Message message);
 
+//    User findByPhone_number(String phone_number);
 
     void notify(Operation operation);
 
+    User getUserByPhoneNumber(String phoneNumber);
+
+    boolean createUser(User user);
 //    void visited(Message message);
 //    public List<Operation> findAllOperations();
 
-//    int findOneByUserId(int id);
+    int findOneByUserId(int id);
 //    public List<Operation> findAllByIbanId(int id);
 
 }

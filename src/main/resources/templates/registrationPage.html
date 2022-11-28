@@ -15,13 +15,19 @@
         </div>
 
         <div class="kaspi_pay-signIn-block">
-            <h1>Вход</h1>
-            <form action="/auth" method="post" class="kaspi_pay-signIn-form">
-                <input type="text" placeholder="Мобильный номер" name="phone_number">
-                <input type="password" placeholder="Пароль" name="password">
-                <input type="submit" value="Войти" class="signIn-button">
+            <h1>Регистрация</h1>
+            <form action="/register" method="post">
+                <!--            <label for="firatname"></label>-->
+                <input type="text" id="firstname" placeholder="Имя" name="firstname">
+                <input type="text" id="lastname" placeholder="Фамилия" name="lastname">
+                <input type="date" id="birth_date" placeholder="Дата рождения" name="birth_date">
+                <input type="text" id="address" placeholder="Адрес" name="address">
+                <input type="text" id="email" placeholder="Email" name="email">
+                <input type="number" id="phoneNumber" placeholder="Номер телефона" name="phoneNumber">
+                <input type="password" id="password" placeholder="Пароль" name="password">
+                <input type="submit" value="Зарегистрироваться" class="signIn-button">
             </form>
-            <a href="/register">Забыли пароль?</a>
+            <a href="/kaspiPay">Уже есть аккаунт?</a>
         </div>
 
         <div class="kaspi_pay-git-block">
@@ -70,7 +76,7 @@
             <div class="kaspi_pay-footer-app_link-block">
                 <div class="app_link">
                     <a href="https://apps.apple.com/kz/app/kaspi-бизнес/id1262997215">
-                            <img src="img/appstore.svg" alt="appstore">
+                        <img src="img/appstore.svg" alt="appstore">
                     </a>
                 </div>
                 <div class="app_link">
@@ -86,6 +92,6 @@
             </div>
         </div>
     </div>
-<!--        <a href="/greeting">here</a>-->
+
 </body>
 </html>

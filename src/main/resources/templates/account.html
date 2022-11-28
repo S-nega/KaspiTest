@@ -1,29 +1,165 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-<title>Kaspi Pay</title>
-<link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
-<link href="../static/kaspiPay_style.css" th:href="@{/kaspiPay_style.css}" rel="stylesheet" />
-</head>
-<body>
-<!--    <header>-->
-<!--        <img src="img/kaspiPay.svg">-->
-<!--    </header>    -->
-    <h1>Мой Счет</h1>
-    <a href="/messages">Сообщения</a>
-    <a href="/addOperation">Сделать перевод</a>
+    <head>
+        <meta charset="UTF-8">
+        <title>Kaspi Pay</title>
+        <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
+        <link href="../static/kaspiPay_style.css" th:href="@{/kaspiPay_style.css}" rel="stylesheet" />
+        <link href="../static/menu_style.css" th:href="@{/menu_style.css}" rel="stylesheet" />
+        <link href="../static/account_style.css" th:href="@{/account_style.css}" rel="stylesheet" />
+    </head>
+    <body>
+        <div th:insert="menu.html" class="content"></div>
+    <!--    <header>-->
+    <!--        <img src="img/kaspiPay.svg">-->
+    <!--    </header>    -->
+<!--        <div class="content">-->
+        <div class="container">
+            <h1>Мой Счет</h1>
+            <img src="../static/img/kaspiQR.png" alt="kaspiQR">
 
-    <tr th:each="users: ${user}">
-        KZ00900<td th:text="${users.iban}"></td>
-        <td th:text="${user.getFirstname()}"></td>
-        <td th:text="${user.getLastname()}"></td>
-        <td >
-            <a href="/operations/{users.iban}">Выписка по операциям</a>
-        </td>
-    </tr>
-<br>
-op iban
+            <table style="width: 100%">
+                <tr th:each="iban: ${ibans}" class="card">
+                    <td>Kaspi Gold *</td>
+                    <td th:text="${iban.getId()}"></td>
+                    <td>Доступно</td>
+                    <td th:text="${iban.getSum()}"></td>
+                </tr>
+            </table>
 
-</body>
+            <ul class="card menu-list">
+                <li class="card menu-element">
+                    Действия
+                    <div class="menu-emerging_block actions">
+                        <ul class="menu-actions">
+                            <li class="menu-emerging_element">
+                                <a>
+                                    <img src="../static/img/kaspiQR.png" alt="kaspiQR">
+                                    Kaspi QR
+                                </a>
+                            </li>
+                            <li class="menu-emerging_element">
+                                <a>
+                                    <img src="" alt="">
+                                    Перевести
+                                </a>
+                            </li>
+                            <li class="menu-emerging_element">
+                                <a>
+                                    <img src="" alt="">
+                                    Пополнить Kaspi Gold
+                                </a>
+                            </li>
+                            <li class="menu-emerging_element">
+                                <a>
+                                    <img src="" alt="">
+                                    Оплата в интернете
+                                </a>
+                            </li>
+                            <li class="menu-emerging_element">
+                                <a>
+                                    <img src="" alt="">
+                                    Сменить ПИН-код
+                                </a>
+                            </li>
+                            <li class="menu-emerging_element">
+                                <a>
+                                    <img src="" alt="">
+                                    Заблокировать карту
+                                </a>
+                            </li>
+                            <li class="menu-emerging_element">
+                                <a>
+                                    <img src="" alt="">
+                                    Снять деньги без карты
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="card menu-element">
+                    Инфо
+                    <div class="menu-emerging_block info">
+                        <ul class="menu-info">
+                            <li class="menu-emerging_element">
+                                <a>
+                                    <img src="" alt="">
+                                    Аналитика покупок
+                                </a>
+                            </li>
+                            <li class="menu-emerging_element">
+                                <a>
+                                    <img src="" alt="">
+                                    Лимиты на снятие наличных
+                                </a>
+                            </li>
+                            <li class="menu-emerging_element">
+                                <a>
+                                    <img src="" alt="">
+                                    Реквизиты карты и счета
+                                </a>
+                            </li>
+                            <li class="menu-emerging_element">
+                                <a>
+                                    <img src="" alt="">
+                                    Справки
+                                </a>
+                            </li>
+                            <li class="menu-emerging_element">
+                                <a>
+                                    <img src="" alt="">
+                                    Условия Kaspi Gold
+                                </a>
+                            </li>
+                            <li class="menu-emerging_element">
+                                <a>
+                                    <img src="" alt="">
+                                    Ближайшие банкоматы
+                                </a>
+                            </li>
+                            <li class="menu-emerging_element">
+                                <a>
+                                    <img src="" alt="">
+                                    Полезные советы
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="card menu-element">
+                    Выписка
+                    <div class="menu-emerging_block extract">
+                        <ul class="menu-extract">
+                            <li class="menu-emerging_element">
+                                <a>
+                                    <img src="" alt="filter">
+                                </a>
+                            </li>
+                            <li class="menu-emerging_element">
+                                <a>
+                                    <img src="" alt="operations">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+<!--                    <div>-->
+<!--                        <ul th:each="operations: ${operation}">-->
+<!--                            <li th:text="${operations.sum}">-->
+<!--                                <a></a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+                </li>
+            </ul>
+
+<!--            <a href="/messages">Сообщения</a>-->
+<!--            <a href="/addOperation">Сделать перевод</a>-->
+
+<!--                <td th:text="${user.getFirstname()}"></td>-->
+<!--                <td th:text="${user.getLastname()}"></td>-->
+<!--                <td >-->
+<!--                    <a href="/operations/{users.iban}">Выписка по операциям</a>-->
+<!--                </td>-->
+        </div>
+    </body>
 </html>

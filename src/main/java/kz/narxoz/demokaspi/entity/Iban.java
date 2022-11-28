@@ -10,8 +10,11 @@ public class Iban {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "user_id")
-    private int user_id;
+    @Column(name = "user_phoneNumber")
+    private String user_phoneNumber;
+
+    @Column(name = "sum")
+    private int sum;
 
     public int getId() {
         return id;
@@ -20,10 +23,17 @@ public class Iban {
         this.id = id;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public String getUser_phoneNumber() {
+        return user_phoneNumber;
     }
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUser_phoneNumber(String user_phoneNumber) {
+        this.user_phoneNumber = user_phoneNumber;
+    }
+
+    public int getSum() {
+        return sum;
+    }
+    public void setSum(int sum) {
+        this.sum = sum;
     }
 }
