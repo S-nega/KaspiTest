@@ -1,11 +1,13 @@
 package kz.narxoz.demokaspi.repository;
 
-import kz.narxoz.demokaspi.entity.Iban;
+import kz.narxoz.demokaspi.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
-public interface IbanRepository extends JpaRepository<Iban, Integer> {
+public interface RoleRepository extends JpaRepository<Role, Integer> {
+
+    Role findByRole(String role);
 }

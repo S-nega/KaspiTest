@@ -26,6 +26,14 @@ body{
     font-size: 17px;
     padding: 20px 15px;
     outline-offset: 0;
+    color: inherit;
+    font-family: inherit;
+    font: inherit;
+}
+input::-webkit-input-placeholder{
+    color: #ababab;
+}
+input::-moz-placeholder{
     color: #ababab;
 }
 .kaspi_pay-signIn-block input:focus{
@@ -39,6 +47,7 @@ body{
     color: #0089d0;
     font-size: 12px;
     line-height: 14px;
+    text-decoration: none;
 }
 .kaspi_pay-signIn-block a:hover{
     text-decoration: underline;
