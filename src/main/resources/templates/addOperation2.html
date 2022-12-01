@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="UTF-8">
+        <title>Kaspi Pay</title>
+        <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
+        <link href="../static/menu_style.css" th:href="@{/menu_style.css}" rel="stylesheet" />
+        <link href="../static/kaspiPay_style.css" th:href="@{/kaspiPay_style.css}" rel="stylesheet" />
+        <link href="../static/operation_style.css" th:href="@{/operation_style.css}" rel="stylesheet" />
+    </head>
+    <body>
+        <div th:insert="menu.html" class="content"></div>
+
+        <div class="container">
+            <ul class="menu-list operation_change-list">
+                <li class="operation_change-element">
+                    <h1 class="header" onclick="toOperations()" >Переводы</h1>
+                    <div class="operation_block" id="operations">
+                        <div class="card-info_block">
+                            <tr class="" th:each="ibans: ${iban}" style="height: 40px">
+                                <td>
+                                    <a href="" class="kaspi_gold"></a>
+                                    <p> Kaspi Gold </p>
+                                </td>
+                                <h3>
+                                    <td th:text="${ibans.getSum()}"></td>
+                                </h3>
+                            </tr>
+                        </div>
+                        <div class="operation_form">
+                            <form action="/addOperation" method="post">
+                                <ul class="menu-list operations">
+                                    <li class="operation_change-element">
+                                        <h2 class="header" onclick="toPhone()">Телефон</h2>
+                                        <div class="card-info_block byPhone" id="byPhone">
+                                            <input type="number" placeholder="+7 () - - " name="user_phone_number">
+                                            <a href="#"></a>
+                                        </div>
+                                    </li>
+                                    <li class="operation_change-element">
+                                        <h2 class="header" onclick="toIban()">Карта</h2>
+                                        <div class="card-info_block byIban" id="byIban">
+                                            <a href="" class="kaspi_gold"></a>
+                                            <input type="number" value="0" placeholder="Kaspi Gold получателя" name="ibanGetter">
+                                            <a href="#"></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="card-info_block">
+                                    <input type="number" id="sum" placeholder="0 тг" name="sum">
+                                    <input type="text" id="message" placeholder="Сообщение получателю" name="message">
+                                    <input type="text" id="operation_type" value="+" style="display: none" name="operation_type">
+                                    <tr th:each="ibans: ${iban}">
+                                        <input type="number" th:value="${ibans.getId()}" style="display: none" name="ibanSender">
+                                    </tr>
+                                    <input type="submit" value="Перевести" class="signIn-button">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+                <li class="operation_change-element">
+                    <h1 class="header" onclick="toHistories()">История</h1>
+                    <div class="history_block" id="histories">
+                        <div class="card-info_block">
+                            <form action="/searchByName" class="search_form">
+                                <a href=""></a>
+                                <input type="text" placeholder="Поиск по переводам">
+                            </form>
+                            <form action="/searchByDate" class="search_form date" method="post">
+                                <a href=""></a>
+                                <input type="date" placeholder="21 ноября - 28 ноября">
+                            </form>
+                        </div>
+                        <div class="history_list">
+                            <div class="card-info_block">
+                                <table>
+                                    <tr th:each="operation: ${operations}">
+                                        <td>to </td>
+                                        <td th:text="${operation.getIbanGetter()}"></td>
+                                        <td th:text="${operation.getSum()}"></td>
+                                        <td th:text="${operation.getMessage()}"></td>
+
+                                        <!--&lt;!&ndash;                                    <tr>&ndash;&gt;-->
+<!--                                        <td>-->
+<!--                                            <a href=""></a>-->
+<!--                                        </td>-->
+<!--                                        <td>-->
+<!--                                            <ul>-->
+<!--                                                <li>-->
+<!--                                                    Kaspi Gold-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    <a href=""></a>-->
+<!--&lt;!&ndash;                                                    <p>Otpravitel</p>&ndash;&gt;-->
+<!--                                                    <p>-->
+<!--                                                        <td th:text="${operation.getIbanGetter()}"></td>-->
+<!--                                                    </p>-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    Клиенту Kaspi-->
+<!--                                                </li>-->
+<!--                                            </ul>-->
+<!--                                        </td>-->
+<!--                                        <td>-->
+<!--                                            <h3>-->
+<!--&lt;!&ndash;                                                10 000&ndash;&gt;-->
+<!--                                                <td th:text="${operation.getSum()}"></td>-->
+<!--                                                тг-->
+<!--                                            </h3>-->
+<!--                                        </td>-->
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    <script>
+        function toPhone(){
+            byPhone.style.display = "flex";
+            byIban.style.display = "none";
+        }
+        function toIban(){
+            byPhone.style.display = "none";
+            byIban.style.display = "flex";
+        }
+
+        function toOperations(){
+            operations.style.display = "block";
+            histories.style.display = "none";
+        }
+        function toHistories(){
+            operations.style.display = "none";
+            histories.style.display = "block";
+        }
+    </script>
+    </body>
+</html>

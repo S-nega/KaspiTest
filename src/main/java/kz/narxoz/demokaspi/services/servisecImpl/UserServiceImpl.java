@@ -6,7 +6,6 @@ import kz.narxoz.demokaspi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,8 +21,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private IbanRepository ibanRepository;
-//    @Autowired
-//    private User user;
+
+
 
     @Override
     public List<User> findAllUsers(){
@@ -48,6 +47,45 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
+    public List<Iban> findAllIbans() {
+        List<Iban> ibans = ibanRepository.findAll();
+        return ibans;
+    }
+
+    @Override
+    public void saveIban(Iban iban) {
+        ibanRepository.save(iban);
+    }
+
+    @Override
+    public Iban findOneIbanById(int id) {
+        return ibanRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void deleteIban(int id) {
+        ibanRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Operation> findAllOperations() {
+        List<Operation> operations = operationRepository.findAll();
+        return operations;
+    }
+
+    @Override
+    public List<Operation> findAllOperationsByGetterIban(int iban) {
+        List<Operation> operations = operationRepository.findAllByIbanGetter(iban);
+        return operations;
+    }
+
+    @Override
+    public List<Operation> findAllOperationsBySenderIban(int iban) {
+        List<Operation> operations = operationRepository.findAllByIbanSender(iban);
+        return operations;
+    }
+
+    @Override
     public void saveOperation(Operation operation) {
         operationRepository.save(operation);
     }
@@ -62,24 +100,10 @@ public class UserServiceImpl implements UserService {
     public void saveMessage(Message message) {
         messageRepository.save(message);
     }
-//
-//    @Override
-//    public User findByPhone_number(String phone_number) {
-//        List<User> users = userRepository.findAll();
-//        User user = null;
-//        String thisUs = phone_number;
-//        for (User us: users) {
-//            String checkUser = us.getPhone_number();
-//            if(thisUs == checkUser){
-//                user = us;
-//            }
-//        }
-//        return user;
-//    }
 
     @Override
     public void notify(Operation operation) {
-        System.out.println("По номеру счета KZ00900" + operation.getIban_getter() + " поступил перевод в размере: " + operation.getSum() + "тг");
+        System.out.println("По номеру счета KZ00900" + operation.getIbanGetter() + " поступил перевод в размере: " + operation.getSum() + "тг");
     }
 
     @Override
@@ -116,33 +140,12 @@ public class UserServiceImpl implements UserService {
 //        messageRepository.save(message);
 //    }
 
-//
-//    @Override
-//    public List<Operation> findAllOperations() {
-//        List<Operation> operations = operationRepository.findAll();
-//        return operations;
-//    }
-
     @Override
     public int findOneByUserId(int id) {
         User user = userRepository.findById(id).orElse(null);
         if (user!= null){
             return user.getIban();
         }
-
-            return 0;
-                //        return userRepository.findById(id).get().getIban();
+        return 0;
     }
-
-//    @Override
-//    public List<Operation> findAllByIbanId(int id) {
-//        ArrayList<Operation> firstCatch = (ArrayList<Operation>) operationRepository.findAll();
-//        ArrayList<Operation> operations = new ArrayList <>();
-//        for (int i=0; i<firstCatch.size(); i++){
-//            if(firstCatch.get(i).getIban_id() == id){
-//                operations.add(firstCatch.get(i));
-//            }
-//        }
-//        return operations;
-//    }
 }

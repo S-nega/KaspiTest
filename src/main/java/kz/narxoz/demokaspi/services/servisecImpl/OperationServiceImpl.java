@@ -58,7 +58,7 @@ public class OperationServiceImpl implements OperationService {
         ArrayList<Operation> firstCatch = (ArrayList<Operation>) operationRepository.findAll();
         ArrayList<Operation> operations = new ArrayList <>();
         for (int i=0; i<firstCatch.size(); i++){
-            if(firstCatch.get(i).getIban_getter() == id){
+            if(firstCatch.get(i).getIbanGetter() == id){
                 operations.add(firstCatch.get(i));
             }
         }

@@ -22,12 +22,14 @@
 .menu-logo{
     display: flex;
     align-items: center;
+    height: 35px;
 }
 
 .menu-list{
     margin: 0 auto;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    /*align-items: center;*/
     padding: 7px 0;
     list-style: none;
 }
