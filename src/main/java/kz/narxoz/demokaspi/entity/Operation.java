@@ -10,13 +10,13 @@ public class Operation {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "iban_sender")
-    private int iban_sender;
+    @Column(name = "ibanSender")
+    private int ibanSender;
 
-    @Column(name = "iban_getter")
-    private int iban_getter;
+    @Column(name = "ibanGetter")
+    private int ibanGetter;
 
-    @Column(name = "operation_type")//plus or minus
+    @Column(name = "operation_type")
     private String operation_type;
 
     @Column(name = "sum")
@@ -36,18 +36,18 @@ public class Operation {
         this.id = id;
     }
 
-    public int getIban_sender(){
-        return iban_sender;
+    public int getIbanSender(){
+        return ibanSender;
     }
-    public void setIban_sender(int iban_sender) {
-        this.iban_sender = iban_sender;
+    public void setIbanSender(int ibanSender) {
+        this.ibanSender = ibanSender;
     }
 
-    public int getIban_getter() {
-        return iban_getter;
+    public int getIbanGetter() {
+        return ibanGetter;
     }
-    public void setIban_getter(int iban_getter) {
-        this.iban_getter = iban_getter;
+    public void setIbanGetter(int ibanGetter) {
+        this.ibanGetter = ibanGetter;
     }
 
     public String getOperation_type() {

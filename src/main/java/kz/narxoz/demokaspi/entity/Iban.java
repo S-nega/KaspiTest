@@ -8,13 +8,13 @@ public class Iban {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    public int id;
 
     @Column(name = "user_phoneNumber")
-    private String user_phoneNumber;
+    public String user_phoneNumber;
 
     @Column(name = "sum")
-    private int sum;
+    public int sum;
 
     public int getId() {
         return id;

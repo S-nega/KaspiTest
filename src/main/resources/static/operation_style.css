@@ -1,0 +1,194 @@
+.operation_change-element{
+    width: 270px;
+    color: rgba(0,0,0,.4);
+    /*z-index: 5;*/
+    margin-right: 0;
+}
+.operation_change-element .header{
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    cursor: pointer;
+}
+.operation_change-element .header:active{
+    border-bottom: 3px solid rgb(241, 70, 53);
+    color: rgb(241, 70, 53);
+    padding-bottom: 17px;
+}
+.operation_change-element #byIban{
+    margin-left: -270px;
+    /*display: flex;*/
+    display: none;
+}
+#byPhone{
+    /*display: none !important;*/
+    display: flex;
+}
+
+
+.operation_block{
+    width: 540px;
+    display: block;
+    /*display: none;*/
+}
+.history_block{
+    width: 540px;
+    margin-left: -270px;
+    /*display: block;*/
+    display: none;
+}
+
+
+
+.card-info_block{
+    width: 440px;
+    padding: 20px 50px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 40px;
+    flex-wrap: wrap;
+}
+.card-info_block input{
+    width: 100%;
+    line-height: 24px;
+    border: 1px #ddd solid;
+    font-size: 17px;
+    padding: 5px 15px;
+    outline-offset: 0;
+    color: inherit;
+    font-family: inherit;
+    font: inherit;
+}
+.card-info_block h3{
+    margin: 0 0 0 150px;
+    width: 140px;
+    text-align: right;
+    color: #4a4a4a;
+}
+.card-info_block a{
+    position: absolute;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    margin-left: 380px;
+    border: 0;
+}
+.card-info_block .kaspi_gold{
+    margin-left: 0;
+    background: url(img/i-gold-x1.png) no-repeat center left;
+}
+.card-info_block p{
+    margin: 0 0 0 50px;
+}
+
+.byPhone a{
+    background: url(img/kontakt.png) no-repeat center right;
+}
+.byIban a{
+    background: url(img/i-polychenie-x1.png) no-repeat center right;
+}
+
+.byIban input{
+    margin-left: 50px;
+}
+
+.search_form{
+    width: 440px;
+}
+.search_form a{
+    margin-left: 7px;
+    background: url(img/dt-i-search.png) no-repeat center left;
+}
+.date{
+    margin-top: 7px;
+}
+.date a{
+    background: url(img/i-yslygi-x1.png) no-repeat center left;
+}
+.search_form input{
+    width: 373px;
+    padding-left: 50px;
+}
+
+
+.history_list table{
+    width: 100%;
+}
+.history_list a{
+    margin-left: 0;
+    width: 40px;
+    background: url(img/kontakt.png) no-repeat center left;
+    top: 50.7%;
+}
+.history_list li a{
+    background: url(img/i-regist-x2.png) no-repeat center left;
+}
+.history_list ul{
+    padding-left: 30px;
+    list-style: none;
+    line-height: 20px;
+}
+.history_list li{
+    font-size: 12px;
+}
+.history_list li p{
+    font-size: 16px;
+    color: #4a4a4a;
+    margin: 0 0 0 30px;
+}
+.history_list tr{
+    border-bottom: 1px solid #ababab ;
+}
+
+
+.operation-element{
+    width: 220px;
+    text-align: center;
+    margin: 0 !important;
+    padding-bottom: 20px;
+    /*border-bottom: 3px solid rgb(241, 70, 53);*/
+}
+.
+.operation-element:after{
+    border-bottom: 3px solid rgb(241, 70, 53);
+    color: rgb(241, 70, 53);
+}
+.operation-element:after .menu-emerging_block{
+    display: block;
+    margin-left: -32px;
+    margin-top: 0;
+}
+.kaspi_pay-signIn-block table{
+    width: 100%;
+}
+.kaspi_pay-signIn-block ul{
+    padding: 0;
+    list-style: none;
+}
+.operation_change-element h1{
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    cursor: pointer;
+}
+.operation_element{
+    width: 180px;
+    color: rgba(0,0,0,.4);
+    margin-right: 0;
+}
+.operation_element .header{
+    font-size: 20px;
+}
+#refill{
+    display: block;
+}
+#transfer{
+    margin-left: -180px;
+    display: none;
+}
+#purchase{
+    margin-left: -360px;
+    display: none;
+}

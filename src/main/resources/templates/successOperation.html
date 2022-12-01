@@ -4,11 +4,16 @@
         <meta charset="UTF-8">
         <title>Kaspi Pay</title>
         <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
+        <link href="../static/menu_style.css" th:href="@{/menu_style.css}" rel="stylesheet" />
         <link href="../static/kaspiPay_style.css" th:href="@{/kaspiPay_style.css}" rel="stylesheet" />
     </head>
     <body>
-        <h1>Перевод выполнен</h1>
-        <a href="/addOperation">Вернуться в переводы</a>
-<!--        <tr th:text=""></tr>-->
+        <div th:insert="menu.html" class="content"></div>
+
+        <div class="container">
+            <h1>Перевод выполнен</h1>
+            <a th:href="@{/addOperation/{id}(id=${user.id})}" type="submit" class="signIn-button">Вернуться в переводы</a>
+        </div>
+    <!--        <tr th:text=""></tr>-->
     </body>
 </html>

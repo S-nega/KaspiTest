@@ -1,5 +1,6 @@
 package kz.narxoz.demokaspi.services;
 
+import kz.narxoz.demokaspi.entity.Iban;
 import kz.narxoz.demokaspi.entity.Message;
 import kz.narxoz.demokaspi.entity.Operation;
 import kz.narxoz.demokaspi.entity.User;
@@ -12,12 +13,18 @@ public interface UserService {
     User findOneById(int id);
     void deleteUser(int id);
 
+    public List<Iban> findAllIbans();
+    void saveIban(Iban iban);
+    Iban findOneIbanById(int id);
+    void deleteIban(int id);
+
+    public List<Operation> findAllOperations();
+    public List<Operation> findAllOperationsByGetterIban(int iban);
+    public List<Operation> findAllOperationsBySenderIban(int iban);
     void saveOperation(Operation operation);
 
     public List<Message> findAllMessages();
     void saveMessage(Message message);
-
-//    User findByPhone_number(String phone_number);
 
     void notify(Operation operation);
 
@@ -25,9 +32,6 @@ public interface UserService {
 
     boolean createUser(User user);
 //    void visited(Message message);
-//    public List<Operation> findAllOperations();
 
     int findOneByUserId(int id);
-//    public List<Operation> findAllByIbanId(int id);
-
 }

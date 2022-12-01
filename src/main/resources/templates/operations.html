@@ -4,14 +4,74 @@
         <meta charset="UTF-8">
         <title>Kaspi Pay</title>
         <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
-        <link href="../static/kaspiPay_style.css" th:href="@{/kaspiPay_style.css}" rel="stylesheet" />
+        <link href="../static/operation_style.css" th:href="@{/operation_style.css}" rel="stylesheet" />
+<!--        <link href="../static/kaspiPay_style.css" th:href="@{/kaspiPay_style.css}" rel="stylesheet" />-->
     </head>
     <body>
-        <tr th:each="operations: ${operation}">
-            <!--        <td th:if="${operation.getIban()}==user.getIban()"-->
-            <td th:text="${operation.getIban_id}"></td>
-            <!--        <td th:text="${operation.getOperation_type()}"></td>-->
-            <!--        <td th:text="${operation.getSum()}"></td>-->
-        </tr>
+    <div th:insert="menu.html" class="content"></div>
+
+    <div class="container">
+        <h1>Operations</h1>
+        <ul class="menu-list operation_change-list">
+            <li class="operation_change-element operation_element">
+                <h1 class="header" onclick="toRefill()">Пополнения</h1>
+                <div id="refill">
+                    <div class="card-info_block">
+                        <tr th:each="operation: ${plusOperations}">
+                            from <td th:text="${operation.getIbanSender()}"></td>
+                            <td th:text="${operation.getOperation_type()}"></td>
+                            <td th:text="${operation.getSum()}"></td>
+                            <td th:text="${operation.getMessage()}"></td>
+                            <br>
+                        </tr>
+                    </div>
+                </div>
+            </li>
+            <li class="operation_change-element operation_element">
+                <h1 class="header" onclick="toTransfer()" >Переводы</h1>
+                <div id="transfer">
+                    <div class="card-info_block">
+                        <tr th:each="operation: ${minusOperations}">
+                            to <td th:text="${operation.getIbanGetter()}"></td>
+<!--                            <td th:text="${operation.getOperation_type()}"></td>-->
+                            - <td th:text="${operation.getSum()}"></td>
+                            <td th:text="${operation.getMessage()}"></td>
+                            <br>
+                        </tr>
+                    </div>
+                </div>
+            </li>
+            <li class="operation_change-element operation_element">
+                <h1 class="header" onclick="toPurchase()" >Покупки</h1>
+                <div id="purchase">
+                    <div class="card-info_block">
+                        <tr th:each="operation: ${buyOperations}">
+                            <td th:text="${operation.getIbanGetter()}"></td>
+                            <td th:text="${operation.getOperation_type()}"></td>
+                            <td th:text="${operation.getSum()}"></td>
+                            <br>
+                        </tr>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script>
+        function toRefill(){
+            refill.style.display = "block";
+            transfer.style.display = "none";
+            purchase.style.display = "none";
+        }
+        function toTransfer(){
+            refill.style.display = "none";
+            transfer.style.display = "block";
+            purchase.style.display = "none";
+        }
+        function toPurchase(){
+            refill.style.display = "none";
+            transfer.style.display = "none";
+            purchase.style.display = "block";
+        }
+    </script>
     </body>
 </html>

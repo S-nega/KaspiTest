@@ -9,10 +9,92 @@ ul{
     list-style: none;
     padding: 0;
 }
-.menu-list{
-    background-color: #fff !important;
+/*.menu-list{*/
+/*    background-color: #fff !important;*/
+/*}*/
+.account-element{
+    width: 180px;
+    color: rgba(0,0,0,.4);
+    margin-right: 0;
+}
+.account-element a{
+    text-decoration: none;
+    color: inherit;
 }
 .card>.menu-element{
     margin: 20px 32px 20px 32px;
     width: auto;
+}
+.header{
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    cursor: pointer;
+}
+.header:active{
+    border-bottom: 3px solid rgb(241, 70, 53);
+    color: rgb(241, 70, 53);
+    padding-bottom: 17px;
+}
+
+.action_block{
+    width: 540px;
+}
+.info-block{
+    width: 540px;
+    margin-left: -180px;
+}
+.extract_block{
+    width: 540px;
+    margin-left: -360px;
+}
+
+#actions{
+    display: block;
+    /*display: none;*/
+}
+#info{
+    /*display: block;*/
+    display: none;
+}
+#extract{
+    /*display: block;*/
+    display: none;
+}
+
+
+.card-info_block{
+    width: 440px;
+    padding: 20px 50px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 40px;
+    flex-wrap: wrap;
+}
+.card-info_block h3{
+    margin: 0 0 0 150px;
+    width: 140px;
+    text-align: right;
+    color: #4a4a4a;
+}
+.card-info_block p{
+    margin: 0 0 0 10px;
+}
+
+.search_form{
+    width: 440px;
+}
+.search_form input{
+    width: 373px;
+    padding: 5px 15px 5px 50px;
+    line-height: 42px;
+    color: inherit;
+    font: inherit;
+    border: 1px #ddd solid;
+}
+.search_form>a{
+    background: url(img/i-yslygi-x1.png) no-repeat center left;
 }
