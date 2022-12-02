@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>Kaspi Pay</title>
         <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
-        <link href="../static/menu_style.css" th:href="@{/menu_style.css}" rel="stylesheet" />
+<!--        <link href="../static/menu_style.css" th:href="@{/menu_style.css}" rel="stylesheet" />-->
         <link href="../static/account_style.css" th:href="@{/account_style.css}" rel="stylesheet" />
     </head>
     <body>
@@ -36,7 +36,6 @@
                             <ul class="menu-actions">
                                 <li class="menu-emerging_element">
                                     <a>
-                                        <img src="../static/img/kaspiQR.png" alt="kaspiQR">
                                         Kaspi QR
                                     </a>
                                 </li>
@@ -47,31 +46,26 @@
                                 </li>
                                 <li class="menu-emerging_element">
                                     <a>
-                                        <img src="" alt="">
                                         Пополнить Kaspi Gold
                                     </a>
                                 </li>
                                 <li class="menu-emerging_element">
                                     <a>
-                                        <img src="" alt="">
                                         Оплата в интернете
                                     </a>
                                 </li>
                                 <li class="menu-emerging_element">
                                     <a>
-                                        <img src="" alt="">
                                         Сменить ПИН-код
                                     </a>
                                 </li>
                                 <li class="menu-emerging_element">
                                     <a>
-                                        <img src="" alt="">
                                         Заблокировать карту
                                     </a>
                                 </li>
                                 <li class="menu-emerging_element">
                                     <a>
-                                        <img src="" alt="">
                                         Снять деньги без карты
                                     </a>
                                 </li>
@@ -86,43 +80,36 @@
                             <ul class="menu-info">
                                 <li class="menu-emerging_element">
                                     <a>
-                                        <img src="" alt="">
                                         Аналитика покупок
                                     </a>
                                 </li>
                                 <li class="menu-emerging_element">
                                     <a>
-                                        <img src="" alt="">
                                         Лимиты на снятие наличных
                                     </a>
                                 </li>
                                 <li class="menu-emerging_element">
                                     <a>
-                                        <img src="" alt="">
                                         Реквизиты карты и счета
                                     </a>
                                 </li>
                                 <li class="menu-emerging_element">
                                     <a>
-                                        <img src="" alt="">
                                         Справки
                                     </a>
                                 </li>
                                 <li class="menu-emerging_element">
                                     <a>
-                                        <img src="" alt="">
                                         Условия Kaspi Gold
                                     </a>
                                 </li>
                                 <li class="menu-emerging_element">
                                     <a>
-                                        <img src="" alt="">
                                         Ближайшие банкоматы
                                     </a>
                                 </li>
                                 <li class="menu-emerging_element">
                                     <a>
-                                        <img src="" alt="">
                                         Полезные советы
                                     </a>
                                 </li>
@@ -151,14 +138,16 @@
                         <br>
                         <div class="card-info_block">
                             <tr th:each="operation: ${operations}">
-                                from
-                                <td th:text="${operation.getIbanSender()}"></td>
-                                to
-                                <td th:text="${operation.getIbanGetter()}"></td>
-                                <td th:text="${operation.getOperation_type()}"></td>
-                                <td th:text="${operation.getSum()}"></td>
-                                <td th:text="${operation.getMessage()}"></td>
-                                <br>
+                                <div class="extract_element">
+                                    from
+                                    <td th:text="${operation.getIbanSender()}"></td>
+                                    to
+                                    <td th:text="${operation.getIbanGetter()}"></td>
+                                    <td th:text="${operation.getOperation_type()}"></td>
+                                    <td th:text="${operation.getSum()}"></td>
+                                    <td th:text="${operation.getMessage()}"></td>
+                                    <br>
+                                </div>
                             </tr>
                         </div>
                     </div>

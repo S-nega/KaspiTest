@@ -20,3 +20,130 @@ body{
     margin: auto;
     margin-bottom: 100px;
 }
+
+.header-block{
+    background-color: #fff;
+    width: 100%;
+    font-size: 17px;
+    box-shadow: 0 4px 20px rgb(0 0 0 / 8%);
+    position: fixed;
+    z-index: 20;
+    top: 0;
+}
+.menu-block{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 75px;
+    max-width: 1200px;
+    overflow: auto;
+    margin: 0 auto;
+    padding: 18px 0;
+    flex-wrap: wrap;
+}
+.menu-logo{
+    display: flex;
+    align-items: center;
+    height: 35px;
+}
+
+.menu-list{
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    /*align-items: center;*/
+    padding: 7px 0;
+    list-style: none;
+}
+.menu-element{
+    margin-right: 64px;
+    color: rgba(0,0,0,.4);
+    z-index: 5;
+}
+.menu-element:hover{
+    cursor: pointer;
+    color: #1f1f1f;
+}
+.menu-element:hover .menu-emerging_block{
+    display: flex;
+}
+.menu-emerging_block:hover {
+    display: flex;
+}
+.menu-emerging_block{
+    width: auto;
+    height: auto;
+    border:0;
+    border-radius: 20px;
+    padding: 36px 64px;
+    margin-top: 35px;
+    position: absolute;
+    background-color: white;
+    color: #000;
+    transition: 5000ms;
+    display: none;
+}
+.client{
+    margin-left: -127px;
+}
+.business{
+    margin-left: -268px;
+}
+.gid{
+    margin-left: -64px;
+    width: 66px;
+}
+.menu-products{
+    list-style: none;
+    padding: 0;
+    width: 234px;
+}
+.menu-services{
+    list-style: none;
+    padding: 0;
+    width: 234px;
+}
+.menu-emerging_element{
+    padding-bottom: 20px;
+    font-size: 14px;
+}
+.menu-emerging_element:last-child{
+    padding: 0;
+}
+.bold{
+    font-weight: bold;
+    padding-bottom: 24px;
+    font-size: 17px;
+}
+
+
+.menu-logo{
+    display: flex;
+    align-items: center;
+    height: 35px;
+    width: 150px;
+    background: url(/img/Logo.svg) no-repeat center left;
+}
+.menu-block a{
+    text-decoration: none;
+    color: #4a4a4a;
+    font-weight: bold;
+    font-size: 20px;
+}
+/*.menu-block a:active{*/
+/*    color: #4a4a4a;*/
+/*}*/
+.success_button{
+    background-color: #0089d0;
+    color: #fff !important;
+    text-decoration: none;
+    line-height: 40px;
+    width: 440px;
+    padding: 10px;
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    margin: auto;
+    border-radius: 3px;
+}

@@ -16,13 +16,15 @@
     max-width: 1200px;
     overflow: auto;
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 18px 0;
     flex-wrap: wrap;
 }
 .menu-logo{
     display: flex;
     align-items: center;
     height: 35px;
+    width: 150px;
+    background: url(/img/Logo.svg) no-repeat center left;
 }
 
 .menu-list{
@@ -92,4 +94,8 @@
     font-weight: bold;
     padding-bottom: 24px;
     font-size: 17px;
+}
+.menu-logo a{
+    width: 100px;
+    height: 35px;
 }

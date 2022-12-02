@@ -22,6 +22,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private IbanRepository ibanRepository;
 
+    @Autowired
+    private SellRepository sellRepository;
 
 
     @Override
@@ -41,8 +43,35 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findOneByIbanId(int id) {
+        return userRepository.findByIban(id);
+    }
+
+    @Override
     public void deleteUser(int id) {
         userRepository.deleteById(id);
+    }
+
+
+    @Override
+    public List<Sell> findAllSells() {
+        List<Sell> sells = sellRepository.findAll();
+        return sells;
+    }
+
+    @Override
+    public void saveSell(Sell sell) {
+        sellRepository.save(sell);
+    }
+
+    @Override
+    public Sell findOneSellById(int id) {
+        return sellRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void deleteSell(int id) {
+        sellRepository.deleteById(id);
     }
 
 
@@ -67,6 +96,7 @@ public class UserServiceImpl implements UserService {
         ibanRepository.deleteById(id);
     }
 
+
     @Override
     public List<Operation> findAllOperations() {
         List<Operation> operations = operationRepository.findAll();
@@ -83,6 +113,11 @@ public class UserServiceImpl implements UserService {
     public List<Operation> findAllOperationsBySenderIban(int iban) {
         List<Operation> operations = operationRepository.findAllByIbanSender(iban);
         return operations;
+    }
+
+    @Override
+    public Operation findOneOperationById(int id) {
+        return operationRepository.findById(id).orElse(null);
     }
 
     @Override

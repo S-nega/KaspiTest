@@ -1,154 +1,38 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--    <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />-->
     <link href="../static/menu_style.css" th:href="@{/menu_style.css}" rel="stylesheet" />
-</head>
-<body>
+<!--</head>-->
+<!--<body>-->
     <div class="header-block" th:fragment="menu">
         <div class="menu-block">
             <div class="menu-logo">
-                <a href="/">
-                    <img src="img/Logo.svg" alt="Kaspi Logo">
-                </a>
+                <a></a>
             </div>
 
             <ul class="menu-list">
                 <li class="menu-element">
-                    Клиентам
-                    <div class="menu-emerging_block client">
-                        <ul class="menu-products">
-                            <li class="menu-emerging_element bold">
-                                Продукты Kaspi.kz
-                            </li>
-                            <li class="menu-emerging_element">
-                                <a href="kaspi.kz/gold">Kaspi Gold</a>
-                            </li>
-                            <li class="menu-emerging_element">
-                                <a>Kaspi Gold для ребенка</a>
-                            </li>
-                            <li class="menu-emerging_element">
-                                <a>Kaspi Red</a>
-                            </li>
-                            <li class="menu-emerging_element">
-                                <a>Kaspi Депозит</a>
-                            </li>
-                            <li class="menu-emerging_element">
-                                <a>Кредит на Покупки</a>
-                            </li>
-                            <li class="menu-emerging_element">
-                                <a>Кредит для ИП</a>
-                            </li>
-                            <li class="menu-emerging_element">
-                                <a>Кредит Наличными</a>
-                            </li>
-                        </ul>
-
-                        <ul class="menu-services">
-                            <li class="menu-emerging_element bold">
-                                Сервисы Kaspi.kz
-                            </li>
-                            <li class="menu-emerging_element">
-                                <a>Магазин</a>
-                            </li>
-                            <li class="menu-emerging_element">
-                                <a>Travel</a>
-                            </li>
-                            <li class="menu-emerging_element">
-                                <a>Платежи</a>
-                            </li>
-                            <li class="menu-emerging_element">
-                                <a>Мой банк</a>
-                            </li>
-                            <li class="menu-emerging_element">
-                                <a>Переводы</a>
-                            </li>
-                            <li class="menu-emerging_element">
-                                <a>Акции</a>
-                            </li>
-                            <li class="menu-emerging_element">
-                                <a>Госуслуги</a>
-                            </li>
-                            <li class="menu-emerging_element">
-                                <a>Kaspi Гид</a>
-                            </li>
-                        </ul>
-
-                    </div>
+                    <a th:href="@{/account/{id}(id=${user.id})}">
+                        Мой Банк
+                    </a>
                 </li>
                 <li class="menu-element">
-                    Бизнесу
-                    <div class="menu-emerging_block business">
-                        <ul class="menu-products">
-                            <li class="menu-emerging_element">
-                                <a>Kaspi Pay</a>
-                            </li>
-                            <li class="menu-emerging_element">
-                                <a>Бизнес Кредит</a>
-                            </li>
-                            <li class="menu-emerging_element">
-                                <a>Кредит для ИП</a>
-                            </li>
-                        </ul>
-
-                        <ul class="menu-services">
-                            <li class="menu-emerging_element">
-                                <a>Продавать в Интернет-магазине на Kaspi.kz</a>
-                            </li>
-                            <li class="menu-emerging_element">
-                                <a>Принимать платежи с Kaspi.kz</a>
-                            </li>
-                            <li class="menu-emerging_element">
-                                <a>Kaspi Гид</a>
-                            </li>
-                        </ul>
-
-                    </div>
+                    <a th:href="@{/payment/{id}(id=${user.id})}">
+                        Платежи
+                    </a>
                 </li>
                 <li class="menu-element">
-                    Kaspi Гид
-                    <div class="menu-emerging_block gid">
-                        <ul class="menu-products">
-                            <li class="menu-emerging_element">
-                                <a>Клиентам</a>
-                            </li>
-                            <li class="menu-emerging_element">
-                                <a>Бизнесу</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <a th:href="@{/messages/{id}(id=${user.id})}">
+                        Сообщения
+                    </a>
                 </li>
             </ul>
-        </div>
-    </div>
-
-    <div class="main-block">
-
-        <div class="static-block">
-        </div>
-
-        <div class="services-block">
-        </div>
-
-        <div class="kaspi_shop-block">
-        </div>
-
-        <div class="products-block">
-        </div>
-
-        <div class="for_buisnes-block">
-        </div>
-
-        <div class="kaspi_pay-block">
-            <div class="terminal-block">
-            </div>
-            <div class="stay_partner-block">
+            <div id="logOut">
+                <a href="/logout">LogOut</a>
             </div>
         </div>
-
-        <div class="app_qr-block">
-        </div>
     </div>
-</body>
+<!--</body>-->

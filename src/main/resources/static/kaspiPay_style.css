@@ -59,6 +59,8 @@ input::-moz-placeholder{
     width: 440px !important;
     border: 0 !important;
     margin: 10px 0;
+    line-height: 40px;
+    /*margin: 20px 50px;*/
 }
 .signIn-button:hover{
     cursor: pointer;

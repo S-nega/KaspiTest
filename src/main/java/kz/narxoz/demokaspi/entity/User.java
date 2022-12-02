@@ -87,7 +87,7 @@ public class User {
         this.address = address;
     }
 
-    public String getRole(String user) {
+    public String getRole() {
         return role;
     }
     public void setRole(String role) {

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Kaspi Pay</title>
+        <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
+        <link href="../static/kaspiPay_style.css" th:href="@{/kaspiPay_style.css}" rel="stylesheet" />
+        <link href="../static/account_style.css" th:href="@{/account_style.css}" rel="stylesheet" />
+    </head>
+    <body>
+        <div th:insert="menu.html" class="content"></div>
+        <div class="container">
+            <div class="kaspi_pay-signIn-block">
+                <h1>Добавить новую акцию</h1>
+<!--            <div class="card-info_block">-->
+                <form action="/addSell" method="post" class="kaspi_pay-signIn-form">
+                    <input type="text" placeholder="Название компании" name="companyName">
+                    <input type="text" placeholder="Описание акции" name="description">
+                    <input type="number" th:value="${user.id}" style="display: none" name="id">
+                    <br>
+                    <!--                <input type="text" style="display: none" value="false" name="visible">-->
+                    <input type="submit" value="Опубликовать" class="signIn-button">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

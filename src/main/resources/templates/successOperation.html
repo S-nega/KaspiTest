@@ -6,14 +6,32 @@
         <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
         <link href="../static/menu_style.css" th:href="@{/menu_style.css}" rel="stylesheet" />
         <link href="../static/kaspiPay_style.css" th:href="@{/kaspiPay_style.css}" rel="stylesheet" />
+        <link href="../static/success_style.css" th:href="@{/success_style.css}" rel="stylesheet" />
     </head>
     <body>
         <div th:insert="menu.html" class="content"></div>
 
         <div class="container">
-            <h1>Перевод выполнен</h1>
-            <a th:href="@{/addOperation/{id}(id=${user.id})}" type="submit" class="signIn-button">Вернуться в переводы</a>
+            <div class="success_block">
+                <h1>Ваш перевод совершен.</h1>
+            </div>
+            <a>
+                <div class="card-info_block">
+                    Показать квитанцию
+                    <p>Квитанция сохранена в Истории</p>
+                </div>
+            </a>
+            <div class="card-info_block">
+                <div class="row">
+                    <p>Сохранить в частые</p>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+            <br>
+                <a th:href="@{/addOperation/{id}(id=${user.id})}" type="submit" class="success_button">Вернуться в переводы</a>
         </div>
-    <!--        <tr th:text=""></tr>-->
     </body>
 </html>

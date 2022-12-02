@@ -73,6 +73,7 @@ ul{
     align-items: center;
     line-height: 40px;
     flex-wrap: wrap;
+    color: #4a4a4a;
 }
 .card-info_block h3{
     margin: 0 0 0 150px;
@@ -97,4 +98,44 @@ ul{
 }
 .search_form>a{
     background: url(img/i-yslygi-x1.png) no-repeat center left;
+}
+
+#all{
+    width: 540px;
+    display: flex;
+    margin-left: 10px;
+    flex-wrap: wrap;
+
+}
+#payment{
+    width: 540px;
+    display: none;
+    margin-left: -180px;
+    flex-wrap: wrap;
+}
+#histories{
+    width: 540px;
+    display: none;
+    margin-left: -360px;
+    flex-wrap: wrap;
+}
+
+.menu-emerging_element{
+    padding-bottom: 0 !important;
+}
+.message-menu_element{
+    width: 270px !important;
+}
+#message{
+    width: 270px;
+    display: block;
+}
+#sell{
+    width: 270px;
+    margin-left: -270px;
+    display: none;
+}
+.extract_element{
+    width: 440px;
+    border-bottom: #ababab 1px solid;
 }
