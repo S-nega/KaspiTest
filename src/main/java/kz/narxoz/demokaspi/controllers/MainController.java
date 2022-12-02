@@ -1,10 +1,7 @@
 package kz.narxoz.demokaspi.controllers;
 
 import kz.narxoz.demokaspi.authorization.Server;
-import kz.narxoz.demokaspi.entity.Iban;
-import kz.narxoz.demokaspi.entity.Operation;
-import kz.narxoz.demokaspi.entity.User;
-import kz.narxoz.demokaspi.entity.Message;
+import kz.narxoz.demokaspi.entity.*;
 import kz.narxoz.demokaspi.publisher.EventManager;
 import kz.narxoz.demokaspi.repository.IbanRepository;
 import kz.narxoz.demokaspi.services.IbanService;
@@ -15,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +34,9 @@ public class MainController {
     private UserService userService;
 
 
-    @RequestMapping(value = "/menu")
-    public String menu(){
+    @RequestMapping(value = "/menu{id}")
+    public String menu(@PathVariable(value = "id") int id, Model model){
+        model.addAttribute("user", userService.findOneById(id));
         return "menu";
     }
 
@@ -51,6 +50,7 @@ public class MainController {
         return "footer";
     }
 
+//    @PreAuthorize("")
     @GetMapping(value = "/account/{id}")
     public String account(@PathVariable(value = "id") int id, Model model){
         User user = userService.findOneById(id);
@@ -59,7 +59,6 @@ public class MainController {
         List<Operation> operations = userService.findAllOperations();
         for (Operation operation: operations) {
             if (operation.getIbanGetter() == ibanId){
-//              operations.remove(operation);
                 current.add(operation);
             }
             if(operation.getIbanSender() == ibanId){
@@ -74,35 +73,47 @@ public class MainController {
         return "account";
     }
 
+//    @RolesAllowed("admin")
+    @GetMapping(value = "/admin/{id}")
+    public String admin(@PathVariable(value = "id") int id, Model model) {
+        User user = userService.findOneById(id);
+        model.addAttribute("user", user);
+        return "admin";
+    }
+
+
+    @PostMapping(value = "/addSell")
+    public String addSell(@RequestParam(name = "companyName") String companyName,
+                           @RequestParam(name = "description") String description,
+                          @RequestParam(name = "id") int id) {
+        Sell sell = new Sell();
+        sell.setCompanyName(companyName);
+        sell.setDescription(description);
+        sell.setVisible(false);
+        userService.saveSell(sell);
+        return "redirect:/admin/" + id;
+//        return "admin";
+    }
+
     @GetMapping(value = "/successOperation/{id}")
     public String successOperation(@PathVariable(value = "id") int id, Model model){
         model.addAttribute("user", userService.findOneById(id));
         return "successOperation";
     }
 
-//    @GetMapping(value = "/account")
-////    @PreAuthorize("isAuthenticated()")
-//    public String profile(Model model){
-////        model.addAttribute("currentUser", getUserData());
-//        model.addAttribute("account");
-//        return "account";
-//    }
+    @GetMapping(value = "/messages/{id}")
+    public String massages(@PathVariable(value = "id") int id, Model model){
+        List<Message> messages =  userService.findAllMessages();
 
-    @GetMapping(value = "/messages")//в дальнейшем привязать к аккаунту и айдишке
-    public String massages(){
-        for (int i=0; i<userService.findAllMessages().size(); i++){
-//            message.setVisible(true);//просмотрено
-//            userService.saveMessage(message);
+        model.addAttribute("messages", messages);
+        model.addAttribute("user", userService.findOneById(id));
+        model.addAttribute("sells", userService.findAllSells());
+
+        for (Message message: messages) {
+            message.setVisible(true);
         }
         return "messages";
     }
-
-//    @GetMapping("/addOperation")
-//    public ModelAndView addOperatingPage(){
-//        ModelAndView model = new ModelAndView("addOperation2");
-//        model.addAttribute("iban", ibanRepository.findById(ibanId));
-//        return model;
-//    }
 
     @GetMapping(value = "/operations/{id}")
     public String operations(@PathVariable() int id, Model model){
@@ -115,6 +126,7 @@ public class MainController {
                 buyOperations.add(operation);
             }
         }
+        model.addAttribute("user", user);
         model.addAttribute("plusOperations", userService.findAllOperationsByGetterIban(ibanId));
         model.addAttribute("minusOperations", userService.findAllOperationsBySenderIban(ibanId));
         model.addAttribute("buyOperations", buyOperations);
@@ -126,7 +138,15 @@ public class MainController {
         User user = userService.findOneById(id);
         int ibanId = user.getIban();
         model.addAttribute("iban", userService.findOneIbanById(ibanId));
-        model.addAttribute("operations", userService.findAllOperationsBySenderIban(ibanId));
+        List<Operation> currentOperations = userService.findAllOperationsBySenderIban(ibanId);
+        List<Operation> operations =  userService.findAllOperationsBySenderIban(ibanId);
+        for (Operation operation: operations) {
+            if (operation.getMessage().equals("#buyingOperation")){
+                currentOperations.remove(operation);
+            }
+        }
+        model.addAttribute("user", user);
+        model.addAttribute("operations", currentOperations);
         return "addOperation2";
     }
 
@@ -140,8 +160,39 @@ public class MainController {
                                      HttpServletRequest request){
         Operation operation = new Operation();
         User user = userService.getUserByPhoneNumber(user_phone_number);
+        User currentUser = userService.findOneByIbanId(ibanSender);
         int currentIbanGetter = 0;
-        if (ibanGetter != 0){
+        if (message.equals("#buyingOperation")){
+            String operator = "";
+            if (user_phone_number.contains("+7747")){
+                operator = "Tele2";
+            }
+            else if (user_phone_number.contains("+7701")){
+                operator = "Activ";
+            }
+            else if (user_phone_number.contains("+7777")){
+                operator = "Beeline";
+            }
+            else if (user_phone_number.contains("+7702")){
+                operator = "Kcell";
+            }
+            operation.setSum(sum);
+            operation.setMessage(message);
+            operation.setOperation_type(operation_type);
+            operation.setIbanSender(ibanSender);
+            operation.setIbanGetter(ibanGetter);
+            userService.saveOperation(operation);
+
+            Iban send_iban = userService.findOneIbanById(ibanSender);
+            int sendCurrentSum = send_iban.getSum();
+            sendCurrentSum -= sum;
+            send_iban.setSum(sendCurrentSum);
+            userService.saveIban(send_iban);
+
+            System.out.println(operator + ": Ваш счёт пополнен на " + sum +" тенге.");
+            return "redirect:" + request.getScheme() +":/successOperation/" + currentUser.getId();
+        }
+        else if (ibanGetter != 0){
             operation.setIbanGetter(ibanGetter);
             currentIbanGetter = ibanGetter;
         }
@@ -175,16 +226,34 @@ public class MainController {
         messages.setVisible(false);
         userService.saveMessage(messages);
 
-        userService.notify(operation);//реализовать какое-то уведомление
-
-//        ModelAndView model = new ModelAndView("successOperation");
-//        List allOperations = operationService.findAllOperations();
-//        model.addObject("operation", operationService.findAllOperations());
-//        return model;
-        return "redirect:" + request.getScheme() +":/successOperation/" + user.getId();
+        userService.notify(operation);
+        return "redirect:" + request.getScheme() +":/successOperation/" + currentUser.getId();
     }
 
+    @GetMapping(value = "/payment/{id}")
+    public String payments(@PathVariable() int id, Model model){
+        User user = userService.findOneById(id);
+        List<Operation> buyOperations = new ArrayList<>();
+        List<Operation> operations = userService.findAllOperations();
+        for (Operation operation: operations) {
+            if (operation.getMessage() == "#buyingOperation"){
+                buyOperations.add(operation);
+            }
+        }
+        model.addAttribute("user", user);
+        model.addAttribute("operations", buyOperations);
+        return "payment";
+    }
 
+    @GetMapping(value = "/addPayment/{id}")
+    public String addPaymentPage(@PathVariable(value = "id") int id, Model model){
+        User user = userService.findOneById(id);
+        int ibanId = user.getIban();
+        model.addAttribute("user", user);
+        model.addAttribute("iban", userService.findOneIbanById(ibanId));
+        model.addAttribute("operations", userService.findAllOperationsBySenderIban(ibanId));
+        return "addPayment";
+    }
 
     @GetMapping(value = "/register")
     public ModelAndView registrationPage() {
@@ -216,14 +285,25 @@ public class MainController {
                                 HttpServletRequest request){
         User user = userService.getUserByPhoneNumber(phone_number);
         String usPas = user.getPassword();
+        String route = ":/account/";
+        if ("admin".equals(user.getRole())){
+            route = ":/admin/";
+        }
         if (usPas.equals(password)){
             System.out.println("enter is successful");
-            return "redirect:" + request.getScheme() +":/account/" + user.getId();
+            return "redirect:" + request.getScheme() + route + user.getId();
         }
         else {
             System.out.println("enter пошло не так");
+
         }
-        return "error";
+//        return "error";
+        return "redirect:" + request.getScheme() + ":/error";
+    }
+
+    @RequestMapping(value = "/logout")
+    public String LogOut(){
+        return "pay_signIn";
     }
 
 //    private User getUserData(){

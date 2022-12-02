@@ -1,0 +1,32 @@
+.message_block{
+    width: 440px;
+    padding: 20px 50px;
+    background-color: #fcf0db;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 40px;
+    flex-wrap: wrap;
+    color: #4a4a4a;
+}
+.message_element{
+    width: 418px;
+    border: #fefefe 1px solid;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff;
+    margin-top: 20px;
+}
+.sms{
+    width: 430px;
+    background-color: #fcd143;
+    color: white;
+    padding-left: 10px;
+    margin-top: -10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.message_block .success_button{
+    width: auto;
+    border-radius: 3px;
+}

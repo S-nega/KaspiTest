@@ -4,17 +4,64 @@
         <meta charset="UTF-8">
         <title>Kaspi Pay</title>
         <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
-        <link href="../static/messages_style.css" th:href="@{/messages_style.css}" rel="stylesheet" />
+<!--        <link href="../static/messages_style.css" th:href="@{/messages_style.css}" rel="stylesheet"/>-->
+        <link href="../static/account_style.css" th:href="@{/account_style.css}" rel="stylesheet"/>
+        <link href="../static/message_style.css" th:href="@{/message_style.css}" rel="stylesheet"/>
     </head>
     <body>
-        <h1>Сообщения</h1>
-        <tr th:each="messages: ${message}">
-            Владелец счета KZ00900<td th:text="${messages.iban_sender}"></td> перевел Вам:
-            <br>
-            <td th:text="${messages.sum}"></td>
-            <br>
-            <td th:text="${message.getMessage()}"></td>
-        </tr>
-        <p> </p>
+        <div th:insert="menu.html" class="content"></div>
+
+        <div class="container">
+            <ul class="menu-list operation_change-list">
+                <li class="account-element message-menu_element">
+                    <h1 class="header" onclick="toMessage()">Сообщения</h1>
+                    <div id="message">
+                        <div class="message_block">
+                            <tr th:each="message: ${messages}">
+                                <div class="message_element">
+                                    Владелец счета KZ00900<td th:text="${message.getIban_sender()}"></td> перевел Вам:
+                                    <td th:text="${message.getSum()}"></td> тенге
+                                </div>
+                                <div class="sms">
+                                    <td th:text="${message.getMessage()}"></td>
+                                </div>
+                            </tr>
+                        </div>
+                    </div>
+                </li>
+                <li class="account-element message-menu_element">
+                    <h1 class="header" onclick="toSell()">Акции</h1>
+                    <div id="sell">
+                        <div class="message_block">
+
+                            <tr th:each="sell: ${sells}">
+                                <div class="message_element">
+                                    <td th:text="${sell.getCompanyName()}">Company name</td>
+                                    <br>
+                                    <td th:text="${sell.getDescription()}">Description</td>
+                                    <a href="/" class="success_button">Купить сейчас</a>
+                                </div>
+                            </tr>
+<!--                            <tr th:each="messages: ${message}">-->
+<!--                                <td th:text="${messages.getIban_sender()}"></td> перевел Вам:-->
+<!--                                <td th:text="${messages.getSum()}"></td>-->
+<!--                                <td th:text="${messages.getMessage()}"></td>-->
+<!--                                <br>-->
+<!--                            </tr>-->
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </body>
+    <script>
+        function toMessage(){
+            message.style.display = "block";
+            sell.style.display = "none";
+        }
+        function toSell(){
+            message.style.display = "none";
+            sell.style.display = "block";
+        }
+    </script>
 </html>

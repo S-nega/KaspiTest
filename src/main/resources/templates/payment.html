@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Kaspi Pay</title>
+        <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
+<!--        <link href="../static/menu_style.css" th:href="@{/menu_style.css}" rel="stylesheet" />-->
+        <link href="../static/account_style.css" th:href="@{/account_style.css}" rel="stylesheet" />
+    </head>
+    <body>
+        <div th:insert="menu.html" class="content"></div>
+
+            <div class="container">
+                <ul class="menu-list">
+                    <li class="account-element">
+                        <h1 class="header" onclick="toEverything()">Все</h1>
+                        <div id="all">
+                            <div class="card-info_block">
+                                <form action="/searchByName" class="search_form" method="post">
+                                    <a href=""></a>
+                                    <input type="text" placeholder="Что хотите оплатить?">
+                                </form>
+                            </div>
+                            <br>
+                            <div class="card-info_block">
+                                <ul class="menu-actions">
+                                    <li class="menu-emerging_element">
+                                        <a th:href="@{/addPayment/{id}(id=${user.id})}">
+                                            Мобильный
+                                        </a>
+                                    </li>
+                                    <li class="menu-emerging_element">
+                                        <a>
+                                            Коммуналка и телефон
+                                        </a>
+                                    </li>
+                                    <li class="menu-emerging_element">
+                                        <a>
+                                            Транспорт
+                                        </a>
+                                    </li>
+                                    <li class="menu-emerging_element">
+                                        <a>
+                                            Интернет и ТВ
+                                        </a>
+                                    </li>
+                                    <li class="menu-emerging_element">
+                                        <a>
+                                            Образование
+                                        </a>
+                                    </li>
+                                    <li class="menu-emerging_element">
+                                        <a>
+                                            Штрафы и налоги
+                                        </a>
+                                    </li>
+                                    <li class="menu-emerging_element">
+                                        <a>
+                                            Красота и здоровье
+                                        </a>
+                                    </li>
+                                    <li class="menu-emerging_element">
+                                        <a>
+                                            Финансовые услуги
+                                        </a>
+                                    </li>
+                                    <li class="menu-emerging_element">
+                                        <a>
+                                            Билеты
+                                        </a>
+                                    </li>
+                                    <li class="menu-emerging_element">
+                                        <a>
+                                            Покупки и заказы
+                                        </a>
+                                    </li>
+                                    <li class="menu-emerging_element">
+                                        <a>
+                                            Развлечения и отдых
+                                        </a>
+                                    </li>
+                                    <li class="menu-emerging_element">
+                                        <a>
+                                            Благотворительность
+                                        </a>
+                                    </li>
+                                    <li class="menu-emerging_element">
+                                        <a>
+                                            Сайты объявлений
+                                        </a>
+                                    </li>
+                                    <li class="menu-emerging_element">
+                                        <a>
+                                            Игры
+                                        </a>
+                                    </li>
+                                    <li class="menu-emerging_element">
+                                        <a>
+                                            Другое
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="account-element">
+                        <h1 class="header" onclick="toPayment()">Платежи</h1>
+                        <div id="payment">
+                            <div class="card-info_block">
+                                <form action="/searchByName" class="search_form" method="post">
+                                    <a href=""></a>
+                                    <input type="text" placeholder="Что хотите оплатить?">
+                                </form>
+                            </div>
+                            <br>
+                            <div class="card-info_block">
+                                <ul class="menu-info">
+                                    <li>
+                                        <a></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="account-element">
+                        <h1 class="header" onclick="toHistory()">История</h1>
+                        <div id="histories">
+                            <div class="card-info_block">
+                                <ul class="menu-extract">
+                                    <li class="menu-emerging_element">
+                                        <form action="/searchByName" class="search_form" method="post">
+                                            <a href=""></a>
+                                            <input type="text" placeholder="Услуга, сумма">
+                                        </form>
+                                    </li>
+                                    <li class="menu-emerging_element">
+<!--                                        <a th:href="@{/operations/{id}(id=${user.id})}">-->
+<!--                                            Операции-->
+<!--                                        </a>-->
+                                    </li>
+                                </ul>
+                            </div>
+                            <br>
+                            <div class="card-info_block">
+<!--                                <tr th:each="operation: ${operations}">-->
+<!--                                    from-->
+<!--                                    <td th:text="${operation.getIbanSender()}"></td>-->
+<!--                                    to-->
+<!--                                    <td th:text="${operation.getIbanGetter()}"></td>-->
+<!--                                    <td th:text="${operation.getOperation_type()}"></td>-->
+<!--                                    <td th:text="${operation.getSum()}"></td>-->
+<!--                                    <br>-->
+<!--                                </tr>-->
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+    </body>
+    <script>
+        function toEverything(){
+            all.style.display = "flex";
+            payment.style.display = "none";
+            histories.style.display = "none";
+        }
+        function toPayment(){
+            all.style.display = "none";
+            payment.style.display = "flex";
+            histories.style.display = "none";
+        }
+        function toHistory(){
+            all.style.display = "none";
+            payment.style.display = "none";
+            histories.style.display = "flex";
+        }
+    </script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="UTF-8">
+        <title>Kaspi Pay</title>
+        <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
+<!--        <link href="../static/menu_style.css" th:href="@{/menu_style.css}" rel="stylesheet" />-->
+        <link href="../static/kaspiPay_style.css" th:href="@{/kaspiPay_style.css}" rel="stylesheet" />
+        <link href="../static/operation_style.css" th:href="@{/operation_style.css}" rel="stylesheet" />
+    </head>
+    <body>
+        <div th:insert="menu.html" class="content"></div>
+
+        <div class="container">
+            <h1>Мобильный</h1>
+            <div class="operation_form">
+                <form action="/addOperation" method="post">
+                    <div class="card-info_block">
+                        <input type="number" onclose="operatorDefinition()" placeholder="+7 () - - " name="user_phone_number">
+                        <a href="#"></a>
+                        <input type="number" id="sum" placeholder="0 тг" name="sum">
+                        <input type="text" id="message" value="#buyingOperation" style="display: none" name="message">
+                        <input type="text" id="operation_type" value="+" style="display: none" name="operation_type">
+                        <input type="text" id="ibanGetter" value="0" style="display: none" name="ibanGetter">
+                        <tr th:each="ibans: ${iban}">
+                            <input type="number" th:value="${ibans.getId()}" style="display: none" name="ibanSender">
+                        </tr>
+                    </div>
+                    <br>
+                    <div class="card-info_block">
+                        <tr class="" th:each="ibans: ${iban}" style="height: 40px">
+                            <td>
+                                <a href="" class="kaspi_gold"></a>
+                                <p> Kaspi Gold </p>
+                            </td>
+                            <h3>
+                                <td th:text="${ibans.getSum()}"></td>
+                            </h3>
+                        </tr>
+                        <div class="row">
+                            Потратить бонусы
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <input type="submit" value="К оплате" class="signIn-button">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+    <script>
+        function operatorDefinition(){
+            console.log("operatorDefinition");
+            if (user_phone_number.startsWith ("+7747") ){
+                return "tele2";
+            }
+        }
+    </script>
+</html>
