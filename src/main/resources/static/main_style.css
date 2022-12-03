@@ -127,13 +127,13 @@ body{
 }
 .menu-block a{
     text-decoration: none;
-    color: #4a4a4a;
+    color: #ababab;
     font-weight: bold;
     font-size: 20px;
 }
-/*.menu-block a:active{*/
-/*    color: #4a4a4a;*/
-/*}*/
+.menu-block a:active{
+    color: #4a4a4a;
+}
 .success_button{
     background-color: #0089d0;
     color: #fff !important;

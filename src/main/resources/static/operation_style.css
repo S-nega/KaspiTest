@@ -10,7 +10,7 @@
     margin: 0;
     cursor: pointer;
 }
-.operation_change-element .header:active{
+.operation_change-element .header:active {
     border-bottom: 3px solid rgb(241, 70, 53);
     color: rgb(241, 70, 53);
     padding-bottom: 17px;

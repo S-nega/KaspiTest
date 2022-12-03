@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>Kaspi Pay</title>
         <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
-<!--        <link href="../static/menu_style.css" th:href="@{/menu_style.css}" rel="stylesheet" />-->
+        <link href="../static/menu_style.css" th:href="@{/menu_style.css}" rel="stylesheet" />
         <link href="../static/account_style.css" th:href="@{/account_style.css}" rel="stylesheet" />
     </head>
     <body>
@@ -116,7 +116,12 @@
                             <div class="card-info_block">
                                 <ul class="menu-info">
                                     <li>
-                                        <a></a>
+                                        <p style="margin: 0; color: #ababab; font-size: 14px">Частые</p>
+                                    </li>
+                                    <li>
+                                        <a th:href="@{/addPayment/{id}(id=${user.id})}">
+                                            Мобильный
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -133,24 +138,16 @@
                                             <input type="text" placeholder="Услуга, сумма">
                                         </form>
                                     </li>
-                                    <li class="menu-emerging_element">
-<!--                                        <a th:href="@{/operations/{id}(id=${user.id})}">-->
-<!--                                            Операции-->
-<!--                                        </a>-->
-                                    </li>
                                 </ul>
                             </div>
                             <br>
                             <div class="card-info_block">
-<!--                                <tr th:each="operation: ${operations}">-->
-<!--                                    from-->
-<!--                                    <td th:text="${operation.getIbanSender()}"></td>-->
-<!--                                    to-->
-<!--                                    <td th:text="${operation.getIbanGetter()}"></td>-->
-<!--                                    <td th:text="${operation.getOperation_type()}"></td>-->
-<!--                                    <td th:text="${operation.getSum()}"></td>-->
-<!--                                    <br>-->
-<!--                                </tr>-->
+                                <tr th:each="operation: ${operations}">
+                                    Пополнение баланса на сумму:
+                                    <td th:text="${operation.getSum()}"></td>
+                                    тенге.
+                                    <br>
+                                </tr>
                             </div>
                         </div>
                     </li>
