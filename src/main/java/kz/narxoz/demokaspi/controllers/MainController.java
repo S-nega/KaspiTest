@@ -17,11 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-//import org.springframework.security.access.prepost.PreAuthorize;
-//import org.springframework.security.authentication.AnonymousAuthenticationToken;
-//import org.springframework.security.core.Authentication;
-//import org.springframework.security.core.context.SecurityContextHolder;
-//import org.springframework.security.core.userdetails.User;
 
 
 @Controller
@@ -34,6 +29,11 @@ public class MainController {
     private UserService userService;
 
 
+    @RequestMapping(value = "/footer")
+    public String footer(){
+        return "footer";
+    }
+
     @RequestMapping(value = "/menu{id}")
     public String menu(@PathVariable(value = "id") int id, Model model){
         model.addAttribute("user", userService.findOneById(id));
@@ -45,12 +45,6 @@ public class MainController {
         return "pay_signIn";
     }
 
-    @RequestMapping(value = "/footer")
-    public String footer(){
-        return "footer";
-    }
-
-//    @PreAuthorize("")
     @GetMapping(value = "/account/{id}")
     public String account(@PathVariable(value = "id") int id, Model model){
         User user = userService.findOneById(id);
@@ -236,7 +230,7 @@ public class MainController {
         List<Operation> buyOperations = new ArrayList<>();
         List<Operation> operations = userService.findAllOperations();
         for (Operation operation: operations) {
-            if (operation.getMessage() == "#buyingOperation"){
+            if (operation.getMessage().equals("#buyingOperation")){
                 buyOperations.add(operation);
             }
         }
@@ -263,19 +257,14 @@ public class MainController {
 
     @PostMapping(value = "/register")
     public ModelAndView registration(@ModelAttribute("kaspi_users") User user){
-//        userService.saveUser(user);
         ModelAndView model = new ModelAndView("error");//+message
         if(userService.createUser(user)){
-//            userService.saveUser(user);
             model = new ModelAndView("pay_signIn");//+message
             System.out.println("регистрация выполнена успешно");
-            //уведомление "регистрация выполнена успешно"
-            //возможно добавить смс верификацию (смс будет отправляться в терминал)
         }
         else {
             System.out.println("что-то пошло не так");
         }
-        //уведомление с ошибкой
         return model;
     }
 
@@ -284,6 +273,8 @@ public class MainController {
                                 @RequestParam(name = "password") String password,
                                 HttpServletRequest request){
         User user = userService.getUserByPhoneNumber(phone_number);
+        if (user == null){
+        }
         String usPas = user.getPassword();
         String route = ":/account/";
         if ("admin".equals(user.getRole())){
@@ -295,10 +286,8 @@ public class MainController {
         }
         else {
             System.out.println("enter пошло не так");
-
         }
-//        return "error";
-        return "redirect:" + request.getScheme() + ":/error";
+        return ":/kaspiPay?error";
     }
 
     @RequestMapping(value = "/logout")
