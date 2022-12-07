@@ -3,21 +3,16 @@ package kz.narxoz.demokaspi.controllers;
 import kz.narxoz.demokaspi.authorization.Server;
 import kz.narxoz.demokaspi.entity.*;
 import kz.narxoz.demokaspi.publisher.EventManager;
-import kz.narxoz.demokaspi.repository.IbanRepository;
-import kz.narxoz.demokaspi.services.IbanService;
 import kz.narxoz.demokaspi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 
 @Controller
@@ -28,7 +23,6 @@ public class MainController {
 
     @Autowired
     private UserService userService;
-
 
     @RequestMapping(value = "/footer")
     public String footer(){
@@ -84,7 +78,6 @@ public class MainController {
         }
         return "pay_signIn";
     }
-
 
     @PostMapping(value = "/addSell")
     public String addSell(@RequestParam(name = "companyName") String companyName,
@@ -339,14 +332,4 @@ public class MainController {
         userService.saveUser(user);
         return "pay_signIn";
     }
-
-//    private User getUserData(){
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        if(!(authentication instanceof AnonymousAuthenticationToken)){
-//            User secUser = (User)authentication.getPrincipal();
-//            User myUser = userService.getUserByPhoneNumber(secUser.getPhoneNumber());
-//            return myUser;
-//        }
-//        return null;
-//    }
 }
