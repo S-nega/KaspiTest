@@ -31,7 +31,7 @@
                 </li>
             </ul>
             <div id="logOut">
-                <a href="/logout">LogOut</a>
+                <a th:href="@{/logout/{id}(id=${user.id})}">LogOut</a>
             </div>
         </div>
     </div>
