@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <title>Kaspi Pay</title>
         <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
-<!--        <link href="../static/messages_style.css" th:href="@{/messages_style.css}" rel="stylesheet"/>-->
         <link href="../static/account_style.css" th:href="@{/account_style.css}" rel="stylesheet"/>
         <link href="../static/message_style.css" th:href="@{/message_style.css}" rel="stylesheet"/>
     </head>
@@ -14,7 +13,7 @@
         <div class="container">
             <ul class="menu-list operation_change-list">
                 <li class="account-element message-menu_element">
-                    <h1 class="header" onclick="toMessage()">Сообщения</h1>
+                    <h1 class="header" id="message_header" onclick="toMessage()">Сообщения</h1>
                     <div id="message">
                         <div class="message_block">
                             <tr th:each="message: ${messages}">
@@ -30,7 +29,7 @@
                     </div>
                 </li>
                 <li class="account-element message-menu_element">
-                    <h1 class="header" onclick="toSell()">Акции</h1>
+                    <h1 class="header" id="sell_header" onclick="toSell()">Акции</h1>
                     <div id="sell">
                         <div class="message_block">
 
@@ -58,10 +57,26 @@
         function toMessage(){
             message.style.display = "block";
             sell.style.display = "none";
+
+            message_header.style.borderBottom = "3px solid rgb(241, 70, 53)";
+            message_header.style.color = "rgb(241, 70, 53)";
+            message_header.style.paddingBottom = "17px";
+
+            sell_header.style.borderBottom = 0;
+            sell_header.style.color = "rgba(0,0,0,.4)";
+            sell_header.style.paddingBottom = "20px";
         }
         function toSell(){
             message.style.display = "none";
             sell.style.display = "block";
+
+            message_header.style.borderBottom = 0;
+            message_header.style.color = "rgba(0,0,0,.4)";
+            message_header.style.paddingBottom = "20px";
+
+            sell_header.style.borderBottom = "3px solid rgb(241, 70, 53)";
+            sell_header.style.color = "rgb(241, 70, 53)";
+            sell_header.style.paddingBottom = "17px";
         }
     </script>
 </html>

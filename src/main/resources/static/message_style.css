@@ -30,3 +30,14 @@
     width: auto;
     border-radius: 3px;
 }
+#message_header{
+    border-bottom: 3px solid rgb(241, 70, 53);
+    color: rgb(241, 70, 53);
+    padding-bottom: 17px;
+}
+#messages{
+    color: #4a4a4a;
+}
+#account{
+    color: #ababab;
+}

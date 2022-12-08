@@ -13,7 +13,7 @@
     <div class="container">
         <ul class="menu-list operation_change-list">
             <li class="operation_change-element operation_element">
-                <h1 class="header" onclick="toRefill()">Пополнения</h1>
+                <h1 class="header" id="refill_header" onclick="toRefill()">Пополнения</h1>
                 <div id="refill">
                     <div class="card-info_block">
                         <tr th:each="operation: ${plusOperations}">
@@ -27,12 +27,11 @@
                 </div>
             </li>
             <li class="operation_change-element operation_element">
-                <h1 class="header" onclick="toTransfer()" >Переводы</h1>
+                <h1 class="header" id="transfer_header" onclick="toTransfer()" >Переводы</h1>
                 <div id="transfer">
                     <div class="card-info_block">
                         <tr th:each="operation: ${minusOperations}">
                             to <td th:text="${operation.getIbanGetter()}"></td>
-<!--                            <td th:text="${operation.getOperation_type()}"></td>-->
                             - <td th:text="${operation.getSum()}"></td>
                             <td th:text="${operation.getMessage()}"></td>
                             <br>
@@ -41,12 +40,16 @@
                 </div>
             </li>
             <li class="operation_change-element operation_element">
-                <h1 class="header" onclick="toPurchase()" >Покупки</h1>
+                <h1 class="header" id="purchase_header" onclick="toPurchase()" >Покупки</h1>
                 <div id="purchase">
                     <div class="card-info_block">
                         <tr th:each="operation: ${buyOperations}">
-                            <td th:text="${operation.getIbanGetter()}"></td>
-                            <td th:text="${operation.getOperation_type()}"></td>
+<!--                            <td th:text="${operation.getIbanGetter()}"></td>-->
+<!--                            <td th:text="${operation.getOperation_type()}"></td>-->
+                            <a></a>
+                            Beeline
+                            Платежи на Kaspi.kz
+                            -
                             <td th:text="${operation.getSum()}"></td>
                             <br>
                         </tr>
@@ -60,16 +63,53 @@
             refill.style.display = "block";
             transfer.style.display = "none";
             purchase.style.display = "none";
+
+            refill_header.style.borderBottom = "3px solid rgb(241, 70, 53)";
+            refill_header.style.color = "rgb(241, 70, 53)";
+            refill_header.style.paddingBottom = "17px";
+
+            transfer_header.style.borderBottom = 0;
+            transfer_header.style.color = "rgba(0,0,0,.4)";
+            transfer_header.style.paddingBottom = "20px";
+
+            purchase_header.style.borderBottom = 0;
+            purchase_header.style.color = "rgba(0,0,0,.4)";
+            purchase_header.style.paddingBottom = "20px";
+
         }
         function toTransfer(){
             refill.style.display = "none";
             transfer.style.display = "block";
             purchase.style.display = "none";
+
+            refill_header.style.borderBottom = 0;
+            refill_header.style.color = "rgba(0,0,0,.4)";
+            refill_header.style.paddingBottom = "20px";
+
+            transfer_header.style.borderBottom = "3px solid rgb(241, 70, 53)";
+            transfer_header.style.color = "rgb(241, 70, 53)";
+            transfer_header.style.paddingBottom = "17px";
+
+            purchase_header.style.borderBottom = 0;
+            purchase_header.style.color = "rgba(0,0,0,.4)";
+            purchase_header.style.paddingBottom = "20px";
         }
         function toPurchase(){
             refill.style.display = "none";
             transfer.style.display = "none";
             purchase.style.display = "block";
+
+            refill_header.style.borderBottom = 0;
+            refill_header.style.color = "rgba(0,0,0,.4)";
+            refill_header.style.paddingBottom = "20px";
+
+            transfer_header.style.borderBottom = 0;
+            transfer_header.style.color = "rgba(0,0,0,.4)";
+            transfer_header.style.paddingBottom = "20px";
+
+            purchase_header.style.borderBottom = "3px solid rgb(241, 70, 53)";
+            purchase_header.style.color = "rgb(241, 70, 53)";
+            purchase_header.style.paddingBottom = "17px";
         }
     </script>
     </body>
