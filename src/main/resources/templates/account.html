@@ -30,7 +30,7 @@
 
             <ul class="menu-list">
                 <li class="account-element">
-                    <h1 class="header" onclick="toActions()">Действия</h1>
+                    <h1 class="header" id="actions_header" onclick="toActions()">Действия</h1>
                     <div class="action_block" id="actions">
                         <div class="card-info_block">
                             <ul class="menu-actions">
@@ -74,7 +74,7 @@
                     </div>
                 </li>
                 <li class="account-element">
-                    <h1 class="header" onclick="toInfo()">Инфо</h1>
+                    <h1 class="header" id="info_header" onclick="toInfo()">Инфо</h1>
                     <div class="info-block" id="info">
                         <div class="card-info_block">
                             <ul class="menu-info">
@@ -118,7 +118,7 @@
                     </div>
                 </li>
                 <li class="account-element">
-                    <h1 class="header" onclick="toExtract()">Выписка</h1>
+                    <h1 class="header" id="extract_header" onclick="toExtract()">Выписка</h1>
                     <div class="extract_block" id="extract">
                         <div class="card-info_block">
                             <ul class="menu-extract">
@@ -160,16 +160,52 @@
             actions.style.display = "block";
             info.style.display = "none";
             extract.style.display = "none";
+
+            actions_header.style.borderBottom = "3px solid rgb(241, 70, 53)";
+            actions_header.style.color = "rgb(241, 70, 53)";
+            actions_header.style.paddingBottom = "17px";
+
+            info_header.style.borderBottom = 0;
+            info_header.style.color = "rgba(0,0,0,.4)";
+            info_header.style.paddingBottom = "20px";
+
+            extract_header.style.borderBottom = 0;
+            extract_header.style.color = "rgba(0,0,0,.4)";
+            extract_header.style.paddingBottom = "20px";
         }
         function toInfo(){
             actions.style.display = "none";
             info.style.display = "block";
             extract.style.display = "none";
+
+            actions_header.style.borderBottom = 0;
+            actions_header.style.color = "rgba(0,0,0,.4)";
+            actions_header.style.paddingBottom = "20px";
+
+            info_header.style.borderBottom = "3px solid rgb(241, 70, 53)";
+            info_header.style.color = "rgb(241, 70, 53)";
+            info_header.style.paddingBottom = "17px";
+
+            extract_header.style.borderBottom = 0;
+            extract_header.style.color = "rgba(0,0,0,.4)";
+            extract_header.style.paddingBottom = "20px";
         }
         function toExtract(){
             actions.style.display = "none";
             info.style.display = "none";
             extract.style.display = "block";
+
+            actions_header.style.borderBottom = 0;
+            actions_header.style.color = "rgba(0,0,0,.4)";
+            actions_header.style.paddingBottom = "20px";
+
+            info_header.style.color = "rgba(0,0,0,.4)";
+            info_header.style.paddingBottom = "20px";
+            info_header.style.borderBottom = 0;
+
+            extract_header.style.borderBottom = "3px solid rgb(241, 70, 53)";
+            extract_header.style.color = "rgb(241, 70, 53)";
+            extract_header.style.paddingBottom = "17px";
         }
     </script>
 </html>
