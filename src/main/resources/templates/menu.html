@@ -15,27 +15,41 @@
 
             <ul class="menu-list">
                 <li class="menu-element">
-                    <a th:href="@{/account/{id}(id=${user.id})}">
+                    <a id="account" onclick="toAccount()" th:href="@{/account/{id}(id=${user.id})}">
                         Мой Банк
                     </a>
                 </li>
                 <li class="menu-element">
-                    <a th:href="@{/payment/{id}(id=${user.id})}">
+                    <a id="payments" onclick="toPayments()" th:href="@{/payment/{id}(id=${user.id})}">
                         Платежи
                     </a>
                 </li>
                 <li class="menu-element">
-                    <a th:href="@{/messages/{id}(id=${user.id})}">
+                    <a id="messages" onclick="toMessages()" th:href="@{/messages/{id}(id=${user.id})}">
                         Сообщения
                     </a>
                 </li>
             </ul>
-            <div id="logOut">
+            <div style="padding-top: 7px">
                 <a th:href="@{/logout/{id}(id=${user.id})}">LogOut</a>
             </div>
         </div>
     </div>
     <script>
-
+        // function toAccount(){
+        //     account.style.color = "#4a4a4a";
+        //     payments.style.color = "#ababab";
+        //     messages.style.color = "#ababab";
+        // }
+        // function toPayments() {
+        //     account.style.color = "#ababab";
+        //     payments.style.color = "#4a4a4a";
+        //     messages.style.color = "#ababab";
+        // }
+        // function toMessages(){
+        //     account.style.color = "#ababab";
+        //     payments.style.color = "#ababab";
+        //     messages.style.color = "#4a4a4a";
+        // }
     </script>
 <!--</body>-->

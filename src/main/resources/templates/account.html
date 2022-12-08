@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>Kaspi Pay</title>
         <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
-<!--        <link href="../static/menu_style.css" th:href="@{/menu_style.css}" rel="stylesheet" />-->
+        <link href="../static/menu_style.css" th:href="@{/menu_style.css}" rel="stylesheet" />
         <link href="../static/account_style.css" th:href="@{/account_style.css}" rel="stylesheet" />
     </head>
     <body>
@@ -22,11 +22,25 @@
                         </p>
                     </td>
                     <h3>
-                        <td th:text="${ibans.getSum()}">
-                        </td>
+                        <td th:text="${ibans.getSum()}"></td>
                     </h3>
                 </tr>
             </div>
+<!--            <div class="card-info_block">-->
+<!--                <tr class="" th:each="ibans: ${iban}" style="height: 40px">-->
+<!--                    <td>-->
+<!--                        <a href="" class="kaspi_gold"></a>-->
+<!--                        <p> Kaspi Gold *</p>-->
+<!--                        <p>-->
+<!--                            <td th:text="${ibans.getId()}"></td>-->
+<!--                        </p>-->
+<!--                    </td>-->
+<!--                    <h3>-->
+<!--                        <td th:text="${ibans.getSum()}">-->
+<!--                        </td>-->
+<!--                    </h3>-->
+<!--                </tr>-->
+<!--            </div>-->
 
             <ul class="menu-list">
                 <li class="account-element">

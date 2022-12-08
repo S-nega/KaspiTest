@@ -6,6 +6,7 @@
         <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
         <link href="../static/menu_style.css" th:href="@{/menu_style.css}" rel="stylesheet" />
         <link href="../static/account_style.css" th:href="@{/account_style.css}" rel="stylesheet" />
+        <link href="../static/payment_style.css" th:href="@{/payment_style.css}" rel="stylesheet" />
     </head>
     <body>
         <div th:insert="menu.html" class="content"></div>
@@ -13,7 +14,7 @@
             <div class="container">
                 <ul class="menu-list">
                     <li class="account-element">
-                        <h1 class="header" onclick="toEverything()">Все</h1>
+                        <h1 class="header" id="everything_header" onclick="toEverything()">Все</h1>
                         <div id="all">
                             <div class="card-info_block">
                                 <form action="/searchByName" class="search_form" method="post">
@@ -104,7 +105,7 @@
                         </div>
                     </li>
                     <li class="account-element">
-                        <h1 class="header" onclick="toPayment()">Платежи</h1>
+                        <h1 class="header" id="payment_header" onclick="toPayment()">Платежи</h1>
                         <div id="payment">
                             <div class="card-info_block">
                                 <form action="/searchByName" class="search_form" method="post">
@@ -128,7 +129,7 @@
                         </div>
                     </li>
                     <li class="account-element">
-                        <h1 class="header" onclick="toHistory()">История</h1>
+                        <h1 class="header" id="history_header" onclick="toHistory()">История</h1>
                         <div id="histories">
                             <div class="card-info_block">
                                 <ul class="menu-extract">
@@ -156,19 +157,55 @@
     </body>
     <script>
         function toEverything(){
-            all.style.display = "flex";
+            all.style.display = "block";
             payment.style.display = "none";
             histories.style.display = "none";
+
+            everything_header.style.borderBottom = "3px solid rgb(241, 70, 53)";
+            everything_header.style.color = "rgb(241, 70, 53)";
+            everything_header.style.paddingBottom = "17px";
+
+            payment_header.style.borderBottom = 0;
+            payment_header.style.color = "rgba(0,0,0,.4)";
+            payment_header.style.paddingBottom = "20px";
+
+            history_header.style.borderBottom = 0;
+            history_header.style.color = "rgba(0,0,0,.4)";
+            history_header.style.paddingBottom = "20px";
         }
         function toPayment(){
             all.style.display = "none";
-            payment.style.display = "flex";
+            payment.style.display = "block";
             histories.style.display = "none";
+
+            everything_header.style.borderBottom = 0;
+            everything_header.style.color = "rgba(0,0,0,.4)";
+            everything_header.style.paddingBottom = "20px";
+
+            payment_header.style.borderBottom = "3px solid rgb(241, 70, 53)";
+            payment_header.style.color = "rgb(241, 70, 53)";
+            payment_header.style.paddingBottom = "17px";
+
+            history_header.style.borderBottom = 0;
+            history_header.style.color = "rgba(0,0,0,.4)";
+            history_header.style.paddingBottom = "20px";
         }
         function toHistory(){
             all.style.display = "none";
             payment.style.display = "none";
-            histories.style.display = "flex";
+            histories.style.display = "block";
+
+            everything_header.style.borderBottom = 0;
+            everything_header.style.color = "rgba(0,0,0,.4)";
+            everything_header.style.paddingBottom = "20px";
+
+            payment_header.style.borderBottom = 0;
+            payment_header.style.color = "rgba(0,0,0,.4)";
+            payment_header.style.paddingBottom = "20px";
+
+            history_header.style.borderBottom = "3px solid rgb(241, 70, 53)";
+            history_header.style.color = "rgb(241, 70, 53)";
+            history_header.style.paddingBottom = "17px";
         }
     </script>
 </html>

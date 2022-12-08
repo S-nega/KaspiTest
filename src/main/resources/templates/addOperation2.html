@@ -14,7 +14,7 @@
         <div class="container">
             <ul class="menu-list operation_change-list">
                 <li class="operation_change-element">
-                    <h1 class="header" onclick="toOperations()" >Переводы</h1>
+                    <h1 class="header" id="operations_header" onclick="toOperations()" >Переводы</h1>
                     <div class="operation_block" id="operations">
                         <div class="card-info_block">
                             <tr class="" th:each="ibans: ${iban}" style="height: 40px">
@@ -31,14 +31,14 @@
                             <form action="/addOperation" method="post">
                                 <ul class="menu-list operations">
                                     <li class="operation_change-element">
-                                        <h2 class="header" onclick="toPhone()">Телефон</h2>
+                                        <h2 class="header" id="phone_header" onclick="toPhone()">Телефон</h2>
                                         <div class="card-info_block byPhone" id="byPhone">
                                             <input type="number" placeholder="+7 () - - " name="user_phone_number">
                                             <a href="#"></a>
                                         </div>
                                     </li>
                                     <li class="operation_change-element">
-                                        <h2 class="header" onclick="toIban()">Карта</h2>
+                                        <h2 class="header" id="iban_header" onclick="toIban()">Карта</h2>
                                         <div class="card-info_block byIban" id="byIban">
                                             <a href="" class="kaspi_gold"></a>
                                             <input type="number" value="0" placeholder="Kaspi Gold получателя" name="ibanGetter">
@@ -60,7 +60,7 @@
                     </div>
                 </li>
                 <li class="operation_change-element">
-                    <h1 class="header" onclick="toHistories()">История</h1>
+                    <h1 class="header" id="histories_header" onclick="toHistories()">История</h1>
                     <div class="history_block" id="histories">
                         <div class="card-info_block">
                             <form action="/searchByName" class="search_form">
@@ -92,19 +92,51 @@
         function toPhone(){
             byPhone.style.display = "flex";
             byIban.style.display = "none";
+
+            phone_header.style.borderBottom = "3px solid rgb(241, 70, 53)";
+            phone_header.style.color = "rgb(241, 70, 53)";
+            phone_header.style.paddingBottom = "17px";
+
+            iban_header.style.borderBottom = 0;
+            iban_header.style.color = "rgba(0,0,0,.4)";
+            iban_header.style.paddingBottom = "20px";
         }
         function toIban(){
             byPhone.style.display = "none";
             byIban.style.display = "flex";
+
+            phone_header.style.borderBottom = 0;
+            phone_header.style.color = "rgba(0,0,0,.4)";
+            phone_header.style.paddingBottom = "20px";
+
+            iban_header.style.borderBottom = "3px solid rgb(241, 70, 53)";
+            iban_header.style.color = "rgb(241, 70, 53)";
+            iban_header.style.paddingBottom = "17px";
         }
 
         function toOperations(){
             operations.style.display = "block";
             histories.style.display = "none";
+
+            operations_header.style.borderBottom = "3px solid rgb(241, 70, 53)";
+            operations_header.style.color = "rgb(241, 70, 53)";
+            operations_header.style.paddingBottom = "17px";
+
+            histories_header.style.borderBottom = 0;
+            histories_header.style.color = "rgba(0,0,0,.4)";
+            histories_header.style.paddingBottom = "20px";
         }
         function toHistories(){
             operations.style.display = "none";
             histories.style.display = "block";
+
+            operations_header.style.borderBottom = 0;
+            operations_header.style.color = "rgba(0,0,0,.4)";
+            operations_header.style.paddingBottom = "20px";
+
+            histories_header.style.borderBottom = "3px solid rgb(241, 70, 53)";
+            histories_header.style.color = "rgb(241, 70, 53)";
+            histories_header.style.paddingBottom = "17px";
         }
     </script>
     </body>

@@ -126,15 +126,17 @@ public class MainController {
 
             int ibanId = user.getIban();
             List<Operation> buyOperations = new ArrayList<>();
+            List<Operation> minusOperations = userService.findAllOperationsBySenderIban(ibanId);
             List<Operation> operations = userService.findAllOperations();
             for (Operation operation : operations) {
-                if (operation.getMessage() == "#buyingOperation") {
+                if (operation.getMessage().equals("#buyingOperation")) {
+                    minusOperations.remove(operation);
                     buyOperations.add(operation);
                 }
             }
             model.addAttribute("user", user);
             model.addAttribute("plusOperations", userService.findAllOperationsByGetterIban(ibanId));
-            model.addAttribute("minusOperations", userService.findAllOperationsBySenderIban(ibanId));
+            model.addAttribute("minusOperations", minusOperations);
             model.addAttribute("buyOperations", buyOperations);
             return "operations";
         }

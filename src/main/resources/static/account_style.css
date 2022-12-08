@@ -5,6 +5,12 @@
     margin: 20px 0;
     text-align: center;
 }
+.card-info_block .search_form a{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: 0;
+}
 ul{
     list-style: none;
     padding: 0;
@@ -32,7 +38,12 @@ ul{
     margin: 0;
     cursor: pointer;
 }
-.header:active{
+#actions_header{
+    border-bottom: 3px solid rgb(241, 70, 53);
+    color: rgb(241, 70, 53);
+    padding-bottom: 17px;
+}
+#everything_header{
     border-bottom: 3px solid rgb(241, 70, 53);
     color: rgb(241, 70, 53);
     padding-bottom: 17px;
@@ -63,6 +74,7 @@ ul{
 }
 
 
+
 .card-info_block{
     width: 440px;
     padding: 20px 50px;
@@ -70,20 +82,30 @@ ul{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /*align-items: baseline;*/
     line-height: 40px;
     flex-wrap: wrap;
     color: #4a4a4a;
 }
 .card-info_block h3{
-    margin: 0 0 0 150px;
-    width: 140px;
+    margin: 0 0 0 100px;
+    width: 100px;
     text-align: right;
     color: #4a4a4a;
 }
 .card-info_block p{
-    margin: 0 0 0 10px;
+    margin: 0 0 0 50px;
+    line-height: 50px;
 }
-
+.card-info_block .kaspi_gold{
+    position: absolute;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border: 0;
+    margin-left: 0;
+    background: url(img/i-gold-x1.png) no-repeat center left;
+}
 .search_form{
     width: 440px;
 }
@@ -95,16 +117,16 @@ ul{
     font: inherit;
     border: 1px #ddd solid;
 }
-.search_form>a{
-    background: url(img/i-yslygi-x1.png) no-repeat center left;
+.search_form a{
+    margin-left: 7px;
+    background: url(img/dt-i-search1.png) no-repeat center left;
+    /*background: url(img/i-yslygi-x1.png) no-repeat center left;*/
 }
 
 #all{
     width: 540px;
-    display: flex;
-    margin-left: 10px;
+    display: block;
     flex-wrap: wrap;
-
 }
 #payment{
     width: 540px;
@@ -137,4 +159,7 @@ ul{
 .extract_element{
     width: 440px;
     border-bottom: #ababab 1px solid;
+}
+#account{
+    color: #4a4a4a;
 }
