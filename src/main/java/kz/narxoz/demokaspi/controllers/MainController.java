@@ -288,7 +288,6 @@ public class MainController {
 
     @GetMapping(value = "/register/{success}")
     public String registrationPage(@PathVariable(value = "success") String success, Model model) {
-//        ModelAndView model = new ModelAndView("registrationPage");
         model.addAttribute("success", success);
         return "registrationPage";
     }
@@ -296,22 +295,17 @@ public class MainController {
     @PostMapping(value = "/registration")
     public String registration(@ModelAttribute("kaspi_users") User user,
                                HttpServletRequest request){
-        ModelAndView model = new ModelAndView("error");//+message
+//        ModelAndView model = new ModelAndView("error");//+message
         String success = "true";
         if(userService.createUser(user)){
-            model = new ModelAndView("pay_signIn");//+message
+//            model = new ModelAndView("pay_signIn");//+message
             user.setActiveAccount(true);
             userService.saveUser(user);
             System.out.println("регистрация выполнена успешно");
             return "redirect:" + request.getScheme() + ":/account/" + user.getId() + "/" + success;
         }
-//        else {
-            success = "false";
-            System.out.println("что-то пошло не так");
-//        }
-//        model.addObject(mes);
-//        return model;
-//        return "redirect:" + request.getScheme() + ":/account/" + user.getId() + "/" + success;
+        success = "false";
+        System.out.println("что-то пошло не так");
         return "redirect:" + request.getScheme() + ":/register/" + success;
 
     }
@@ -337,11 +331,8 @@ public class MainController {
         if (usPas.equals(password)){
             user.setActiveAccount(true);
             userService.saveUser(user);
-//            System.out.println(user.getActiveAccount());
             System.out.println("enter is successful");
-//            mes = "?success";
             return "redirect:" + request.getScheme() + route + user.getId() + "/" + success;
-//            return "redirect:/signup?success";
         }
         else {
             System.out.println("enter пошло не так");
