@@ -1,106 +1,106 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Kaspi Pay</title>
-    <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
-    <link href="../static/kaspiPay_style.css" th:href="@{/kaspiPay_style.css}" rel="stylesheet" />
-</head>
-<body>
-    <div class="container">
-        <div th:if="!${success}">
-            <div id="error_reg" class="error_block">
-                <b>Что-то пошло не так</b>
-                <a onclick="closeError()">Понятно</a>
+    <head>
+        <meta charset="UTF-8">
+        <title>Kaspi Pay</title>
+        <link href="../static/main_style.css" th:href="@{/main_style.css}" rel="stylesheet" />
+        <link href="../static/kaspiPay_style.css" th:href="@{/kaspiPay_style.css}" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container">
+            <div th:if="!${success}">
+                <div id="error_reg" class="error_block">
+                    <b>Что-то пошло не так</b>
+                    <a onclick="closeError()">Понятно</a>
+                </div>
             </div>
-        </div>
 
-        <div class="kaspi_pay-logo-block">
-            <a href=""></a>
-        </div>
+            <div class="kaspi_pay-logo-block">
+                <a href=""></a>
+            </div>
 
-        <div class="kaspi_pay-signIn-block">
-            <h1>Регистрация</h1>
-            <form action="/registration" method="post">
-                <!--            <label for="firatname"></label>-->
-                <input type="text" id="firstname" placeholder="Имя" name="firstname">
-                <input type="text" id="lastname" placeholder="Фамилия" name="lastname">
-                <input type="date" id="birth_date" placeholder="Дата рождения" name="birth_date">
-                <input type="text" id="address" placeholder="Адрес" name="address">
-                <input type="text" id="email" placeholder="Email" name="email">
-                <input type="number" id="phoneNumber" placeholder="Номер телефона" name="phoneNumber">
-                <input type="password" id="password" placeholder="Пароль" name="password">
-                <input type="submit" value="Зарегистрироваться" class="signIn-button">
-            </form>
-            <a href="/kaspiPay">Уже есть аккаунт?</a>
-        </div>
+            <div class="kaspi_pay-signIn-block">
+                <h1>Регистрация</h1>
+                <form action="/registration" method="post">
+                    <!--            <label for="firatname"></label>-->
+                    <input type="text" id="firstname" placeholder="Имя" name="firstname">
+                    <input type="text" id="lastname" placeholder="Фамилия" name="lastname">
+                    <input type="date" id="birth_date" placeholder="Дата рождения" name="birth_date">
+                    <input type="text" id="address" placeholder="Адрес" name="address">
+                    <input type="text" id="email" placeholder="Email" name="email">
+                    <input type="number" id="phoneNumber" placeholder="Номер телефона" name="phoneNumber">
+                    <input type="password" id="password" placeholder="Пароль" name="password">
+                    <input type="submit" value="Зарегистрироваться" class="signIn-button">
+                </form>
+                <a href="/logIn/true">Уже есть аккаунт?</a>
+            </div>
 
-        <div class="kaspi_pay-git-block">
-            <a>
-                <h2>Kaspi Гид</h2>
-            </a>
-            <p>расскажем все о наших сервисах</p>
-        </div>
+            <div class="kaspi_pay-git-block">
+                <a>
+                    <h2>Kaspi Гид</h2>
+                </a>
+                <p>расскажем все о наших сервисах</p>
+            </div>
 
-        <div class="kaspi_pay-footer">
-            <div class="kaspi_pay-footer-info-block">
-                <p>
-                    © 2012-2022 гг. АО «Kaspi Bank»,
+            <div class="kaspi_pay-footer">
+                <div class="kaspi_pay-footer-info-block">
+                    <p>
+                        © 2012-2022 гг. АО «Kaspi Bank»,
+                        <br>
+                        Лицензия №1.2.245/61, 03.02.2020, АРКРРФР.
+                    </p>
+
+                    <ul>
+                        <li>
+                            <a>
+                                <img src="img/telegram.png" alt="telegram">
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <img src="img/youtube.png" alt="youtube">
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <img src="img/facebook.png" alt="facebook">
+                            </a>
+                        </li>
+                    </ul>
+
+                    <a>
+                        Корпоративный сайт.
+                    </a>
                     <br>
-                    Лицензия №1.2.245/61, 03.02.2020, АРКРРФР.
-                </p>
-
-                <ul>
-                    <li>
-                        <a>
-                            <img src="img/telegram.png" alt="telegram">
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <img src="img/youtube.png" alt="youtube">
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <img src="img/facebook.png" alt="facebook">
-                        </a>
-                    </li>
-                </ul>
-
-                <a>
-                    Корпоративный сайт.
-                </a>
-                <br>
-                <a>
-                    Пользовательское соглашение.
-                </a>
-
-            </div>
-
-            <div class="kaspi_pay-footer-app_link-block">
-                <div class="app_link">
-                    <a href="https://apps.apple.com/kz/app/kaspi-бизнес/id1262997215">
-                        <img src="img/appstore.svg" alt="appstore">
+                    <a>
+                        Пользовательское соглашение.
                     </a>
+
                 </div>
-                <div class="app_link">
-                    <a href="https://play.google.com/store/apps/details?id=hr.asseco.android.kaspibusiness&pli=1">
-                        <img src="img/googleplay.svg" alt="googleplay">
-                    </a>
-                </div>
-                <div class="app_link">
-                    <a href="https://appgallery.huawei.com/app/C103703341?sharePrepath=ag&locale=ru_RU&source=appshare&subsource=C103703341">
-                        <img src="img/appgalary.svg" alt="appgalary">
-                    </a>
+
+                <div class="kaspi_pay-footer-app_link-block">
+                    <div class="app_link">
+                        <a href="https://apps.apple.com/kz/app/kaspi-бизнес/id1262997215">
+                            <img src="img/appstore.svg" alt="appstore">
+                        </a>
+                    </div>
+                    <div class="app_link">
+                        <a href="https://play.google.com/store/apps/details?id=hr.asseco.android.kaspibusiness&pli=1">
+                            <img src="img/googleplay.svg" alt="googleplay">
+                        </a>
+                    </div>
+                    <div class="app_link">
+                        <a href="https://appgallery.huawei.com/app/C103703341?sharePrepath=ag&locale=ru_RU&source=appshare&subsource=C103703341">
+                            <img src="img/appgalary.svg" alt="appgalary">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
-<script>
-    function closeError(){
-        error_reg.style.display = "none";
-    }
-</script>
+    </body>
+    <script>
+        function closeError(){
+            error_reg.style.display = "none";
+        }
+    </script>
 </html>
