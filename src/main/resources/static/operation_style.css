@@ -82,9 +82,11 @@
     height: 50px;
     margin-left: 380px;
     border: 0;
+    border-radius: 50px;
 }
 .card-info_block .kaspi_gold{
     margin-left: 0;
+    border-radius: 0;
     background: url(img/i-gold-x1.png) no-repeat center left;
 }
 .card-info_block p{
@@ -374,4 +376,41 @@ input:checked + .slider:before {
     font-weight: bold;
     padding-bottom: 24px;
     font-size: 17px;
+}
+
+
+.extract_element{
+    width: 440px;
+    padding: 20px 50px;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 40px;
+}
+.extract_message_element{
+    display: flex;
+    width: 418px;
+    border: #e3e3e3 1px solid;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f7f7f7;
+    margin-top: 20px;
+}
+.extract_sms{
+    width: 430px;
+    background-color: #ababab;
+    color: white;
+    padding-left: 10px;
+    margin-top: -10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.ibans{
+    width: 300px;
+}
+.sum{
+    width: 130px;
+    text-align: right;
 }

@@ -132,6 +132,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<Message> findAllMessagesByUserIban(int ibanGetter) {
+        List<Message> messages = messageRepository.findAllByIbanGetter(ibanGetter);
+        return messages;
+    }
+
+    @Override
     public void saveMessage(Message message) {
         messageRepository.save(message);
     }

@@ -18,7 +18,7 @@
                         <div class="message_block">
                             <tr th:each="message: ${messages}">
                                 <div class="message_element">
-                                    Владелец счета KZ00900<td th:text="${message.getIban_sender()}"></td> перевел Вам:
+                                    Владелец счета Kaspi*<td th:text="${message.getIban_sender()}"></td> перевел Вам:
                                     <td th:text="${message.getSum()}"></td> тенге
                                 </div>
                                 <div class="sms">

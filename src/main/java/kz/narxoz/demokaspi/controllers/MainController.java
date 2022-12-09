@@ -39,30 +39,42 @@ public class MainController {
         return "pay_signIn";
     }
 
-    @GetMapping(value = "/logIn")
-    public String kaspiPaySignIn(){
+    @GetMapping(value = "/logIn/{success}")
+    public String kaspiPaySignIn(@PathVariable(name = "success") String success, Model model){
+        List<User> users = userService.findAllUsers();
+        for (User user: users) {
+            user.setActiveAccount(false);
+            userService.saveUser(user);
+        }
+        model.addAttribute("success", success);
         return "pay_signIn";
     }
 
-    @GetMapping(value = "/account/{id}")
-    public String account(@PathVariable(value = "id") int id, Model model){
+    @GetMapping(value = "/account/{id}/{success}")
+    public String account(@PathVariable(value = "id") int id, Model model,
+                          @PathVariable(value = "success") String success){
         User user = userService.findOneById(id);
-        if (user.getActiveAccount() == true) {
+        if (user.getActiveAccount() == true && user.getRole().equals("user")) {
             int ibanId = user.getIban();
             List<Operation> current = new ArrayList<>();
             List<Operation> operations = userService.findAllOperations();
             for (Operation operation : operations) {
-                if (operation.getIbanGetter() == ibanId) {
-                    current.add(operation);
+                if (operation.getMessage().equals("#buyingOperation")){
                 }
-                if (operation.getIbanSender() == ibanId) {
-                    operation.setOperation_type("-");
-                    current.add(operation);
+                else{
+                    if (operation.getIbanGetter() == ibanId) {
+                        current.add(operation);
+                    }
+                    if (operation.getIbanSender() == ibanId) {
+                        operation.setOperation_type("-");
+                        current.add(operation);
+                    }
                 }
             }
             model.addAttribute("user", user);
             model.addAttribute("operations", current);
             model.addAttribute("iban", userService.findOneIbanById(ibanId));
+            model.addAttribute("success", success);
 //        model.addAttribute("operations", userService.findAllByIbanId(userService.findOneByUserId(id)));
             return "account";
         }
@@ -105,8 +117,8 @@ public class MainController {
     @GetMapping(value = "/messages/{id}")
     public String massages(@PathVariable(value = "id") int id, Model model){
         User user = userService.findOneById(id);
-        if (user.getActiveAccount() == true) {
-            List<Message> messages = userService.findAllMessages();
+        if (user.getActiveAccount() == true && user.getRole().equals("user")) {
+            List<Message> messages = userService.findAllMessagesByUserIban(user.getIban());
             model.addAttribute("messages", messages);
             model.addAttribute("user", user);
             model.addAttribute("sells", userService.findAllSells());
@@ -122,7 +134,7 @@ public class MainController {
     @GetMapping(value = "/operations/{id}")
     public String operations(@PathVariable() int id, Model model){
         User user = userService.findOneById(id);
-        if (user.getActiveAccount() == true) {
+        if (user.getActiveAccount() == true && user.getRole().equals("user")) {
 
             int ibanId = user.getIban();
             List<Operation> buyOperations = new ArrayList<>();
@@ -146,7 +158,7 @@ public class MainController {
     @GetMapping("/addOperation/{id}")
     public String addOperatingPage(@PathVariable(value = "id") int id, Model model){
         User user = userService.findOneById(id);
-        if (user.getActiveAccount() == true) {
+        if (user.getActiveAccount() == true && user.getRole().equals("user")) {
             int ibanId = user.getIban();
             model.addAttribute("iban", userService.findOneIbanById(ibanId));
             List<Operation> currentOperations = userService.findAllOperationsBySenderIban(ibanId);
@@ -232,7 +244,7 @@ public class MainController {
         userService.saveIban(send_iban);
 
         Message messages = new Message();
-        messages.setIban_getter(currentIbanGetter);
+        messages.setIbanGetter(currentIbanGetter);
         messages.setIban_sender(ibanSender);
         messages.setSum(sum);
         messages.setMessage(message);
@@ -246,9 +258,9 @@ public class MainController {
     @GetMapping(value = "/payment/{id}")
     public String payments(@PathVariable() int id, Model model){
         User user = userService.findOneById(id);
-        if (user.getActiveAccount() == true){
+        if (user.getActiveAccount() == true && user.getRole().equals("user")){
             List<Operation> buyOperations = new ArrayList<>();
-            List<Operation> operations = userService.findAllOperations();
+            List<Operation> operations = userService.findAllOperationsBySenderIban(user.getIban());
             for (Operation operation: operations) {
                 if (operation.getMessage().equals("#buyingOperation")){
                     buyOperations.add(operation);
@@ -264,7 +276,7 @@ public class MainController {
     @GetMapping(value = "/addPayment/{id}")
     public String addPaymentPage(@PathVariable(value = "id") int id, Model model){
         User user = userService.findOneById(id);
-        if (user.getActiveAccount() == true) {
+        if (user.getActiveAccount() == true && user.getRole().equals("user")) {
             int ibanId = user.getIban();
             model.addAttribute("user", user);
             model.addAttribute("iban", userService.findOneIbanById(ibanId));
@@ -274,23 +286,34 @@ public class MainController {
         return "pay_signIn";
     }
 
-    @GetMapping(value = "/register")
-    public ModelAndView registrationPage() {
-        ModelAndView model = new ModelAndView("registrationPage");
-        return model;
+    @GetMapping(value = "/register/{success}")
+    public String registrationPage(@PathVariable(value = "success") String success, Model model) {
+//        ModelAndView model = new ModelAndView("registrationPage");
+        model.addAttribute("success", success);
+        return "registrationPage";
     }
 
     @PostMapping(value = "/registration")
-    public ModelAndView registration(@ModelAttribute("kaspi_users") User user){
+    public String registration(@ModelAttribute("kaspi_users") User user,
+                               HttpServletRequest request){
         ModelAndView model = new ModelAndView("error");//+message
+        String success = "true";
         if(userService.createUser(user)){
             model = new ModelAndView("pay_signIn");//+message
+            user.setActiveAccount(true);
+            userService.saveUser(user);
             System.out.println("регистрация выполнена успешно");
+            return "redirect:" + request.getScheme() + ":/account/" + user.getId() + "/" + success;
         }
-        else {
+//        else {
+            success = "false";
             System.out.println("что-то пошло не так");
-        }
-        return model;
+//        }
+//        model.addObject(mes);
+//        return model;
+//        return "redirect:" + request.getScheme() + ":/account/" + user.getId() + "/" + success;
+        return "redirect:" + request.getScheme() + ":/register/" + success;
+
     }
 
     @PostMapping(value = "/myLog")
@@ -298,9 +321,11 @@ public class MainController {
                                 @RequestParam(name = "password") String password,
                                 HttpServletRequest request){
         User user = userService.getUserByPhoneNumber(phone_number);
+        String success = "false";
+        System.out.println(user);
         if (user == null){
             System.out.println("user == null");
-//            return "redirect:/signup?error";
+            return "redirect:" + request.getScheme() + ":/logIn/" + success;
         }
         System.out.println(password);
         String usPas = user.getPassword();
@@ -312,19 +337,16 @@ public class MainController {
         if (usPas.equals(password)){
             user.setActiveAccount(true);
             userService.saveUser(user);
-            System.out.println(user.getActiveAccount());
+//            System.out.println(user.getActiveAccount());
             System.out.println("enter is successful");
-            return "redirect:" + request.getScheme() + route + user.getId();
+//            mes = "?success";
+            return "redirect:" + request.getScheme() + route + user.getId() + "/" + success;
 //            return "redirect:/signup?success";
-
         }
         else {
             System.out.println("enter пошло не так");
         }
-//        return "redirect:/signup?error";
-        return "redirect:" + request.getScheme() + ":/error/" + user.getId();
-
-//        return ":/kaspiPay?error";
+        return "redirect:" + request.getScheme() + ":/logIn/" + success;
     }
 
     @RequestMapping(value = "/logout/{id}")
@@ -332,6 +354,7 @@ public class MainController {
         User user = userService.findOneById(id);
         user.setActiveAccount(false);
         userService.saveUser(user);
+        model.addAttribute("success", "true");
         return "pay_signIn";
     }
 }

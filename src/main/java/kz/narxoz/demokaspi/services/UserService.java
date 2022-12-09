@@ -29,6 +29,7 @@ public interface UserService {
     void saveOperation(Operation operation);
 
     public List<Message> findAllMessages();
+    public List<Message> findAllMessagesByUserIban(int ibanGetter);
     void saveMessage(Message message);
 
     void notify(Operation operation);

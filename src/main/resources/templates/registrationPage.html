@@ -8,6 +8,13 @@
 </head>
 <body>
     <div class="container">
+        <div th:if="!${success}">
+            <div id="error_reg" class="error_block">
+                <b>Что-то пошло не так</b>
+                <a onclick="closeError()">Понятно</a>
+            </div>
+        </div>
+
         <div class="kaspi_pay-logo-block">
             <a href=""></a>
         </div>
@@ -90,6 +97,10 @@
             </div>
         </div>
     </div>
-
 </body>
+<script>
+    function closeError(){
+        error_reg.style.display = "none";
+    }
+</script>
 </html>

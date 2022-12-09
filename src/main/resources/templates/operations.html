@@ -15,26 +15,41 @@
             <li class="operation_change-element operation_element">
                 <h1 class="header" id="refill_header" onclick="toRefill()">Пополнения</h1>
                 <div id="refill">
-                    <div class="card-info_block">
+                    <div class="extract_element">
                         <tr th:each="operation: ${plusOperations}">
-                            from <td th:text="${operation.getIbanSender()}"></td>
-                            <td th:text="${operation.getOperation_type()}"></td>
-                            <td th:text="${operation.getSum()}"></td>
-                            <td th:text="${operation.getMessage()}"></td>
-                            <br>
+                            <div class="extract_message_element">
+                                <div class="ibans">
+                                    Oт Владельца Kaspi*<td th:text="${operation.getIbanSender()}"></td>
+                                </div>
+                                <div class="sum">
+                                    <td th:text="${operation.getOperation_type()}"></td>
+                                    <td th:text="${operation.getSum()}"></td>
+                                </div>
+                            </div>
+                            <div class="extract_sms">
+                                <td th:text="${operation.getMessage()}"></td>
+                            </div>
                         </tr>
                     </div>
                 </div>
             </li>
             <li class="operation_change-element operation_element">
-                <h1 class="header" id="transfer_header" onclick="toTransfer()" >Переводы</h1>
+                <h1 class="header" id="transfer_header" onclick="toTransfer()">Переводы</h1>
                 <div id="transfer">
-                    <div class="card-info_block">
+                    <div class="extract_element">
                         <tr th:each="operation: ${minusOperations}">
-                            to <td th:text="${operation.getIbanGetter()}"></td>
-                            - <td th:text="${operation.getSum()}"></td>
-                            <td th:text="${operation.getMessage()}"></td>
-                            <br>
+                            <div class="extract_message_element">
+                                <div class="ibans">
+                                    Вдадельцу Kaspi*<td th:text="${operation.getIbanGetter()}"></td>
+                                </div>
+                                <div class="sum">
+                                    - <td th:text="${operation.getSum()}"></td>
+                                </div>
+                            </div>
+
+                            <div class="extract_sms">
+                                <td th:text="${operation.getMessage()}"></td>
+                            </div>
                         </tr>
                     </div>
                 </div>
@@ -44,14 +59,15 @@
                 <div id="purchase">
                     <div class="card-info_block">
                         <tr th:each="operation: ${buyOperations}">
-<!--                            <td th:text="${operation.getIbanGetter()}"></td>-->
-<!--                            <td th:text="${operation.getOperation_type()}"></td>-->
+                        <div class="ibans">
                             <a></a>
                             Beeline
                             Платежи на Kaspi.kz
+                        </div>
+                        <div class="sum">
                             -
                             <td th:text="${operation.getSum()}"></td>
-                            <br>
+                        </div>
                         </tr>
                     </div>
                 </div>

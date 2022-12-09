@@ -11,6 +11,14 @@
         <div th:insert="menu.html" class="content"></div>
 
         <div class="container">
+
+            <div th:if="${success}">
+                <div id="success_block">
+                    <b>Регистрация прошла успешно!</b>
+                    <a onclick="closeSuccess()">Понятно</a>
+                </div>
+            </div>
+
             <h1>Мой Счет</h1>
             <div class="card-info_block">
                 <tr class="" th:each="ibans: ${iban}" style="height: 40px">
@@ -26,21 +34,6 @@
                     </h3>
                 </tr>
             </div>
-<!--            <div class="card-info_block">-->
-<!--                <tr class="" th:each="ibans: ${iban}" style="height: 40px">-->
-<!--                    <td>-->
-<!--                        <a href="" class="kaspi_gold"></a>-->
-<!--                        <p> Kaspi Gold *</p>-->
-<!--                        <p>-->
-<!--                            <td th:text="${ibans.getId()}"></td>-->
-<!--                        </p>-->
-<!--                    </td>-->
-<!--                    <h3>-->
-<!--                        <td th:text="${ibans.getSum()}">-->
-<!--                        </td>-->
-<!--                    </h3>-->
-<!--                </tr>-->
-<!--            </div>-->
 
             <ul class="menu-list">
                 <li class="account-element">
@@ -134,6 +127,7 @@
                 <li class="account-element">
                     <h1 class="header" id="extract_header" onclick="toExtract()">Выписка</h1>
                     <div class="extract_block" id="extract">
+
                         <div class="card-info_block">
                             <ul class="menu-extract">
                                 <li class="menu-emerging_element">
@@ -150,17 +144,23 @@
                             </ul>
                         </div>
                         <br>
-                        <div class="card-info_block">
+                        <div class="extract_element">
                             <tr th:each="operation: ${operations}">
-                                <div class="extract_element">
-                                    from
-                                    <td th:text="${operation.getIbanSender()}"></td>
-                                    to
-                                    <td th:text="${operation.getIbanGetter()}"></td>
-                                    <td th:text="${operation.getOperation_type()}"></td>
-                                    <td th:text="${operation.getSum()}"></td>
+                                <div class="extract_message_element">
+                                    <div class="ibans">
+                                        От Kaspi*
+                                        <td th:text="${operation.getIbanSender()}"></td>
+                                        > Kaspi*
+                                        <td th:text="${operation.getIbanGetter()}"></td>
+                                    </div>
+                                    <div class="sum">
+                                        <td th:text="${operation.getOperation_type()}"></td>
+                                        <td th:text="${operation.getSum()}"></td>
+                                    </div>
+                                </div>
+
+                                <div class="extract_sms">
                                     <td th:text="${operation.getMessage()}"></td>
-                                    <br>
                                 </div>
                             </tr>
                         </div>
@@ -170,6 +170,15 @@
         </div>
     </body>
     <script>
+        if(success){
+            alert("Регистрация прошла успешно!")
+        }
+        // else{
+        //     alert("Что-то пошло не так")
+        // }
+        function closeSuccess(){
+            success_block.style.display = "none";
+        }
         function toActions(){
             actions.style.display = "block";
             info.style.display = "none";
