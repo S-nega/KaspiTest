@@ -9,8 +9,8 @@ public class Message {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "iban_getter")
-    private int iban_getter;
+    @Column(name = "ibanGetter")
+    private int ibanGetter;
 
     @Column(name = "iban_sender")
     private int iban_sender;
@@ -31,11 +31,11 @@ public class Message {
         this.id = id;
     }
 
-    public int getIban_getter() {
-        return iban_getter;
+    public int getIbanGetter() {
+        return ibanGetter;
     }
-    public void setIban_getter(int iban_getter) {
-        this.iban_getter = iban_getter;
+    public void setIbanGetter(int ibanGetter) {
+        this.ibanGetter = ibanGetter;
     }
 
     public int getIban_sender() {

@@ -17,7 +17,7 @@
                 <form action="/addOperation" method="post">
                     <div class="card-info_block">
                         <a id="operatorName"></a>
-                        <p th:text="${text}" style="width: 100px; height: 50px"></p>
+<!--                        <p th:text="${text}" style="width: 100px; height: 50px"></p>-->
                         <input type="text" th:value="*{user_phone_number}" onfocusout="operatorDefinition(value)" placeholder="+7 () - - " name="user_phone_number">
                         <a href="#"></a>
                         <input type="number" id="sum" placeholder="0 тг" name="sum">
@@ -58,19 +58,22 @@
             if (user_phone_number.includes("747") || user_phone_number.includes("707")){
                 $text = "tele2";
                 console.log("tele2");
-                operatorName.style.backgroundColor = "red"
+                operatorName.style.background = "url(/img/tele2.jpg) no-repeat center right";
             }
             else if (user_phone_number.includes("708")){
                 $text = "active";
                 console.log("active")
-            }
-            else if (user_phone_number.includes("777")){
-                $text = "beeline";
-                console.log("beeline")
+                operatorName.style.background = "url(/img/activ.jpg) no-repeat center right";
             }
             else if (user_phone_number.includes("778") || user_phone_number.includes("701")){
                 $text = "kcell";
                 console.log("kcell")
+                operatorName.style.background = "url(/img/kcell.jpg) no-repeat center right";
+            }
+            else if (user_phone_number.includes("777")){
+                $text = "beeline";
+                console.log("beeline")
+                operatorName.style.background = "url(/img/beeline.jpg) no-repeat center right";
             }
         }
     </script>

@@ -181,3 +181,33 @@ input::-moz-placeholder{
     position: absolute;
     background: url(img/facebook.png) no-repeat center left;
 }
+
+.error_block{
+    width: 300px;
+    height: 150px;
+    margin: auto;
+    margin-top: 20px;
+    color: #9d2634;
+    background: #f8cfd4;
+    border: #cb5e6e 1px solid;
+    border-radius: 10px;
+    text-align: center;
+    align-items: center;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.error_block b{
+    margin: auto;
+    margin-top: 20px;
+}
+.error_block a{
+    width: 150px;
+    color: #f8cfd4;
+    background-color: #cb5e6e;
+    border: #9d2634 1px solid;
+    border-radius: 5px;
+    margin: auto;
+    padding: 10px;
+    cursor: pointer;
+}

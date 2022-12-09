@@ -73,15 +73,21 @@
                             </form>
                         </div>
                         <div class="history_list">
-                            <div class="card-info_block">
-                                <table>
-                                    <tr th:each="operation: ${operations}">
-                                        <td>to </td>
-                                        <td th:text="${operation.getIbanGetter()}"></td>
-                                        <td th:text="${operation.getSum()}"></td>
+                            <div class="extract_element">
+                                <tr th:each="operation: ${operations}">
+                                    <div class="extract_message_element">
+                                        <div class="ibans">
+                                            Владельцу Kaspi*
+                                            <td th:text="${operation.getIbanGetter()}"></td>
+                                        </div>
+                                        <div class="sum">
+                                            <td th:text="${operation.getSum()}"></td>
+                                        </div>
+                                    </div>
+                                    <div class="extract_sms">
                                         <td th:text="${operation.getMessage()}"></td>
-                                    </tr>
-                                </table>
+                                    </div>
+                                </tr>
                             </div>
                         </div>
                     </div>
