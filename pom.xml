@@ -94,16 +94,13 @@
             <version>1.0</version>
         </dependency>
 <!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-security</artifactId>-->
+<!--            <groupId>org.apache.maven.plugins</groupId>-->
+<!--            <artifactId>maven-checkstyle-plugin</artifactId>-->
 <!--        </dependency>-->
 <!--        <dependency>-->
-<!--            <groupId>org.thymeleaf.extras</groupId>-->
-<!--            <artifactId>thymeleaf-extras-springsecurity5</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.session</groupId>-->
-<!--            <artifactId>spring-session-jdbc</artifactId>-->
+<!--            <groupId>at.bestsolution.efxclipse.eclipse</groupId>-->
+<!--            <artifactId>org.eclipse.m2e.maven.runtime</artifactId>-->
+<!--            <version>1.18.3.20220227-1319</version>-->
 <!--        </dependency>-->
     </dependencies>
 
@@ -121,6 +118,25 @@
                     </excludes>
                 </configuration>
             </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-checkstyle-plugin</artifactId>-->
+<!--                <version>3.0.0</version>-->
+<!--                <configuration>-->
+<!--                    <configLocation>sun_checks.xml</configLocation>-->
+<!--                    <suppressionsLocation>checkstyle-suppressions.xml</suppressionsLocation>-->
+<!--                    <suppressionsFileExpression>checkstyle.suppressions.file</suppressionsFileExpression>-->
+<!--                    <failsOnError>true</failsOnError>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <phase>process-sources</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>check</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 

@@ -23,11 +23,12 @@
                                     <p> Kaspi Gold </p>
                                 </td>
                                 <h3>
-                                    <td th:text="${ibans.getSum()}"></td>
+                                    <td id="sumBlock" th:text="${ibans.getSum()}"></td>
                                 </h3>
                             </tr>
                         </div>
                         <div class="operation_form">
+
                             <form action="/addOperation" method="post">
                                 <ul class="menu-list operations">
                                     <li class="operation_change-element">
@@ -47,15 +48,17 @@
                                     </li>
                                 </ul>
                                 <div class="card-info_block">
-                                    <input type="number" id="sum" placeholder="0 тг" name="sum">
-                                    <input type="text" id="message" placeholder="Сообщение получателю" name="message">
-                                    <input type="text" id="operation_type" value="+" style="display: none" name="operation_type">
                                     <tr th:each="ibans: ${iban}">
+<!--                                        <input type="text" th:value="${ibans.getSum()}" id="gotSum" style="display: none" placeholder="0 тг" name="gotSum">-->
+                                        <input type="number" id="sum" placeholder="0 тг" name="sum">
+                                        <input type="text"  id="message" placeholder="Сообщение получателю" name="message">
+                                        <input type="text" id="operation_type" value="+" style="display: none" name="operation_type">
                                         <input type="number" th:value="${ibans.getId()}" style="display: none" name="ibanSender">
                                     </tr>
                                     <input type="submit" value="Перевести" class="signIn-button">
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </li>
@@ -95,6 +98,14 @@
             </ul>
         </div>
     <script>
+        // function checkSum(sum){
+        //     // mySum = sumBlock.text;
+        //     console.log(sum);
+        //     if (sum){
+        //         console.log("no");
+        //     }
+        // }
+
         function toPhone(){
             byPhone.style.display = "flex";
             byIban.style.display = "none";

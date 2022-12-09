@@ -1,6 +1,6 @@
 package kz.narxoz.demokaspi.controllers;
 
-import kz.narxoz.demokaspi.authorization.Server;
+//import kz.narxoz.demokaspi.authorization.Server;
 import kz.narxoz.demokaspi.entity.*;
 import kz.narxoz.demokaspi.publisher.EventManager;
 import kz.narxoz.demokaspi.services.UserService;
@@ -19,7 +19,7 @@ import java.util.List;
 public class MainController {
 
     public EventManager events;
-    private static Server server;
+//    private static Server server;
 
     @Autowired
     private UserService userService;
@@ -81,11 +81,13 @@ public class MainController {
         return "pay_signIn";
     }
 
-    @GetMapping(value = "/admin/{id}")
-    public String admin(@PathVariable(value = "id") int id, Model model) {
+    @GetMapping(value = "/admin/{id}/{success}")
+    public String admin(@PathVariable(value = "id") int id, Model model,
+                        @PathVariable(value = "success") String success) {
         User user = userService.findOneById(id);
         if (user.getActiveAccount() == true && user.getRole().equals("admin")) {
             model.addAttribute("user", user);
+            model.addAttribute("success", success);
             return "admin";
         }
         return "pay_signIn";
@@ -186,6 +188,7 @@ public class MainController {
         Operation operation = new Operation();
         User user = userService.getUserByPhoneNumber(user_phone_number);
         User currentUser = userService.findOneByIbanId(ibanSender);
+//        int mySum = Integer.parseInt(sum);
         int currentIbanGetter = 0;
         if (message.equals("#buyingOperation")){
             String operator = "";
@@ -210,6 +213,9 @@ public class MainController {
 
             Iban send_iban = userService.findOneIbanById(ibanSender);
             int sendCurrentSum = send_iban.getSum();
+            if (sendCurrentSum < sum){
+                return "redirect:" + request.getScheme() +":/addOperation/" + currentUser.getId();
+            }
             sendCurrentSum -= sum;
             send_iban.setSum(sendCurrentSum);
             userService.saveIban(send_iban);
